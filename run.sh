@@ -1,6 +1,7 @@
 #!/bin/bash
 
 LOCALPATH=$(pwd)
+TOOLSPATH=$(/opt/tools)
 
 #COLORS
 #========================================
@@ -19,6 +20,9 @@ if [[ $(id -u) != 0 ]]; then
     echo -e "\n[!] Install.sh need to run as root or sudoer"
     exit 0
 fi
+
+#Creating tools directory
+mkdir /opt/tools
 
 
 #=============================================================================================
@@ -71,11 +75,11 @@ GO111MODULE=on go get -v github.com/projectdiscovery/chaos-client/cmd/chaos
 
 #Install github-search for subdomains
 echo -e "${RED}[+] Installing github-search for subdomains${NC}"
-mkdir /opt/tools && cd /opt/tools
+cd ${TOOLSPATH}
 git clone https://github.com/gwen001/github-search.git
 cd github-search
 pip3 install -r requirements3.txt
-ln -s /opt/tools/github-search/github-subdomains.py /usr/local/bin/github-subdomains
+ln -s ${TOOLSPATH}/github-search/github-subdomains.py /usr/local/bin/github-subdomains
 
 #Install hacktrails
 echo -e "${RED}[+] Installing hacktrails${NC}"
@@ -110,6 +114,31 @@ echo -e "${RED}[+] Installing and configuring gf ${NC}"
 go get -u github.com/tomnomnom/gf
 echo 'source $GOPATH/src/github.com/tomnomnom/gf/gf-completion.bash' >> ~/.bashrc
 source ~/.bashrc
+#Configuring gf patterns
+mkdir ~/.gf
+cp -r $GOPATH/src/github.com/tomnomnom/gf/examples ~/.gf
+cd /tmp ; git clone https://github.com/1ndianl33t/Gf-Patterns ; cd Gf-Patterns ; cp *.json ~/.gf
+
+#Install ParamSpider
+echo -e "${RED}[+] Installing paramspider${NC}"
+git clone https://github.com/devanshbatham/ParamSpider
+cd ParamSpider
+pip3 install -r requirements.txt
+ln -s /opt/tools/ParamSpider/paramspider.py /usr/local/bin/paramspider
+
+#Install unfurl
+echo -e "${RED}[+] Installing unfurl${NC}"
+go get -u github.com/tomnomnom/unfurl
+
+#Install ffuf
+echo -e "${RED}[+] Installing ffuf${NC}"
+go get -u github.com/ffuf/ffuf
+
+#Install arjun
+echo -e "${RED}[+] Installing arjun${NC}"
+pip3 install arjun
+
+
 
 if [[ $(whoami) != "root" ]]; then
     mv /root/go/bin/* /usr/local/bin
