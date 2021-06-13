@@ -139,12 +139,10 @@ echo -e "${RED}[+] Installing arjun${NC}"
 pip3 install arjun
 
 
-
-if [[ $(whoami) != "root" ]]; then
+if [ $USER == 'root' ]; then
     mv /root/go/bin/* /usr/local/bin
 else
     mv /home/$SUDO_USER/go/bin/* /usr/local/bin
 fi
-
 
 echo -e "${GREEN}[+] DONE${NC}"
