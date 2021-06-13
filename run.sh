@@ -24,7 +24,7 @@ fi
 #=============================================================================================
 echo -e "${RED}[+] Installing all requirements${NC}"
 #Installing packages
-apt-get update && apt-get install net-tools htop vim gzip zip git python3-pip jq tmux snap grepcidr nmap masscan brutespray -y
+apt-get update && apt-get install net-tools htop vim gzip zip git python3-pip jq tmux snap grepcidr nmap masscan brutespray prips -y
 
 #Installing newer GO
 apt purge golang -y
@@ -85,6 +85,20 @@ go get github.com/hakluke/haktrails
 echo -e "${RED}[+] Installing httpx and httprobe ${NC}"
 GO111MODULE=on go get -v github.com/projectdiscovery/httpx/cmd/httpx
 go get -u github.com/tomnomnom/httprobe
+
+#Install gowitness
+echo -e "${RED}[+] Installing gowitness ${NC}"
+go get -u github.com/sensepost/gowitnes
+
+#Install waybackurls
+echo -e "${RED}[+] Installing waybackurls, gau and gauplus ${NC}"
+go get github.com/tomnomnom/waybackurls
+GO111MODULE=on go get -u -v github.com/lc/gau
+GO111MODULE=on go get -u -v github.com/bp0lr/gauplus
+
+#Install metabigor
+echo -e "${RED}[+] Installing metabigor ${NC}"
+GO111MODULE=on go get github.com/j3ssie/metabigor
 
 
 mv /home/$SUDO_USER/go/bin/* /usr/local/bin
