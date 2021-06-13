@@ -82,8 +82,9 @@ echo -e "${RED}[+] Installing hacktrails${NC}"
 go get github.com/hakluke/haktrails
 
 #Install httpx
-echo -e "${RED}[+] Installing httpx${NC}"
+echo -e "${RED}[+] Installing httpx and httprobe ${NC}"
 GO111MODULE=on go get -v github.com/projectdiscovery/httpx/cmd/httpx
+go get -u github.com/tomnomnom/httprobe
 
 
 mv /home/$SUDO_USER/go/bin/* /usr/local/bin
