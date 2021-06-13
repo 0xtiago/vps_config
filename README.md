@@ -1,2 +1,2 @@
-# VPSConfig
-Simple script to prepare my VPSs.
+# vps_config
+Simple script to prepare my VPSs. Feel free to contribute.
