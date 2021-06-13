@@ -24,7 +24,7 @@ fi
 #=============================================================================================
 echo -e "${RED}[+] Installing all requirements${NC}"
 #Installing packages
-apt-get update && apt-get install net-tools htop vim gzip zip git python3-pip jq tmux snap grepcidr nmap masscan brutespray prips -y
+apt-get update && apt-get install net-tools libpcap-dev htop vim gzip zip git python3-pip jq tmux snap grepcidr nmap masscan brutespray prips -y
 
 #Installing newer GO
 apt purge golang -y
@@ -96,13 +96,26 @@ go get github.com/tomnomnom/waybackurls
 GO111MODULE=on go get -u -v github.com/lc/gau
 GO111MODULE=on go get -u -v github.com/bp0lr/gauplus
 
-#Install metabigor
-echo -e "${RED}[+] Installing metabigor ${NC}"
+#Install metabigor and hakrevdns
+echo -e "${RED}[+] Installing metabigor and hakrevdns ${NC}"
 GO111MODULE=on go get github.com/j3ssie/metabigor
+go get github.com/hakluke/hakrevdns
 
+#Install naabu 
+echo -e "${RED}[+] Installing naabu ${NC}"
+GO111MODULE=on go get -v github.com/projectdiscovery/naabu/v2/cmd/naabu
 
-mv /home/$SUDO_USER/go/bin/* /usr/local/bin
+#Install gf 
+echo -e "${RED}[+] Installing and configuring gf ${NC}"
+go get -u github.com/tomnomnom/gf
+echo 'source $GOPATH/src/github.com/tomnomnom/gf/gf-completion.bash' >> ~/.bashrc
+source ~/.bashrc
 
+if [[ $(whoami) != "root" ]]; then
+    mv /root/go/bin/* /usr/local/bin
+else
+    mv /home/$SUDO_USER/go/bin/* /usr/local/bin
+fi
 
 
 echo -e "${GREEN}[+] DONE${NC}"
