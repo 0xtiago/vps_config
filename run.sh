@@ -25,6 +25,7 @@ fi
 mkdir /opt/tools
 
 
+
 #=============================================================================================
 echo -e "${RED}[+] Installing all requirements${NC}"
 #Installing packages
@@ -92,7 +93,11 @@ go get -u github.com/tomnomnom/httprobe
 
 #Install gowitness
 echo -e "${RED}[+] Installing gowitness ${NC}"
-go get -u github.com/sensepost/gowitnes
+#go get -v github.com/sensepost/gowitnes
+cd $TOOLSPATH ; wget https://github.com/sensepost/gowitness/releases/download/2.3.6/gowitness-2.3.6-linux-amd64
+chmod +x gowitness-2.3.6-linux-amd64
+ln -s $TOOLSPATH/gowitness-2.3.6-linux-amd64 /usr/local/bin/gowitness
+
 
 #Install waybackurls
 echo -e "${RED}[+] Installing waybackurls, gau and gauplus ${NC}"
