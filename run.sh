@@ -81,6 +81,10 @@ ln -s /opt/tools/github-search/github-subdomains.py /usr/local/bin/github-subdom
 echo -e "${RED}[+] Installing hacktrails${NC}"
 go get github.com/hakluke/haktrails
 
+#Install httpx
+echo -e "${RED}[+] Installing httpx${NC}"
+GO111MODULE=on go get -v github.com/projectdiscovery/httpx/cmd/httpx
+
 
 mv /home/$SUDO_USER/go/bin/* /usr/local/bin
 
