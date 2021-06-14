@@ -5,7 +5,6 @@
 - Golang
 
 ## Port Scan
-
 - Nmap
 - Masscan
 - naabu
@@ -23,6 +22,8 @@
 ## Bruteforcing (Subdomain, Subdirs and Endpoints)
 - fuff 
 - KiteRunner
+- dirsearch
+- turbosearch
 
 ## Check subdomain and endpoints status
 - httpx
@@ -48,5 +49,13 @@
 - Metabigor
 - hakrevdns
 
-# Wordlists
+## Secrets
+- GitDorker
+
+## Vulnerability Scanners
+- nuclei
+
+# Wordlists Suggested
 - KiteRunner
+- AssetNote
+- SecLists

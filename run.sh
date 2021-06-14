@@ -188,7 +188,35 @@ tar xvzf kiterunner_1.0.2_linux_amd64.tar.gz
 chmod +x kr 
 ln -s ${TOOLSPATH}/kr /usr/local/bin/kr
 
+#Install dirsearch
+echo -e "${RED}[+] Installing Dirsearch${NC}"
+cd ${TOOLSPATH}
+git clone https://github.com/maurosoria/dirsearch.git
+cd dirsearch
+pip3 install -r requirements.txt
+chmod +x dirsearch.py
+ln -s ${TOOLSPATH}/dirsearch.py /usr/local/bin/dirsearch
 
+#Install TurboSearch
+echo -e "${RED}[+] Installing TurboSearch${NC}"
+cd ${TOOLSPATH}
+git clone https://github.com/helviojunior/turbosearch.git
+cd turbosearch
+chmod +x turbosearch.py
+ln -s ${TOOLSPATH}/turbosearch.py /usr/local/bin/turbosearch
+
+#Install Git-Dorker
+echo -e "${RED}[+] Installing GitDorker${NC}"
+cd ${TOOLSPATH}
+git clone https://github.com/obheda12/GitDorker.git
+cd GitDorker
+pip3 install -r requirements.txt
+chmod +x chmod +x GitDorker.py
+ln -s ${TOOLSPATH}/GitDorker.py /usr/local/bin/GitDorker
+
+## Install nuclei
+GO111MODULE=on go get -v github.com/projectdiscovery/nuclei/v2/cmd/nuclei
+~/go/bin/nuclei -update-templates
 
 
 if [ $USER == 'root' ]; then
