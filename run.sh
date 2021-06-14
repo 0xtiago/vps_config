@@ -1,8 +1,8 @@
 #!/bin/bash
 
 LOCALPATH=$(pwd)
-TOOLSPATH=$(/opt/tools)
-WLPATH=$(/opt/wordlists)
+TOOLSPATH="/opt/tools"
+WLPATH="/opt/wordlists"
 
 #COLORS
 #========================================
@@ -32,10 +32,24 @@ mkdir /opt/wordlists
 #=============================================================================================
 echo -e "${RED}[+] Installing all requirements${NC}"
 #Installing packages
-apt-dist upgrade
-apt-get update && apt-get install curl net-tools libpcap-dev htop vim gzip zip git python3-pip python-is-python3 jq tmux snap grepcidr nmap masscan brutespray prips azure-cli -y
+apt-get update
+apt dist-upgrade
+apt-get install zsh curl net-tools libpcap-dev htop vim gzip zip git python3-pip python-is-python3 jq tmux snap grepcidr nmap masscan brutespray prips azure-cli -y
+
+
+echo -e "${RED}[+] Installing all new bash environment, ohmyzsh and tmux config ${NC}"
+#Add my tmux profile
+cd ~ && wget https://raw.githubusercontent.com/0xtiago/dotfiles/master/tmux/.tmux.conf
+## Install ohmyzsh
+sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+#change zshrc theme
+sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="gentoo"/g' ~/.zshrc
+
+
+
 
 #Installing newer GO
+echo -e "${RED}[+] Installing new version of Golang${NC}"
 apt purge golang -y
 apt autoremove golang -y
 cd /tmp
@@ -50,10 +64,12 @@ go version
 go get -u github.com/tomnomnom/anew
 #sudo mv ~/go/bin/anew /usr/local/bin
 
-#=============================================================================================
-#Install assetfinsder
-echo -e "${RED}[+] Installing assetfinder${NC}"
-go get -u github.com/tomnomnom/assetfinder
+
+
+
+#Install notify
+echo -e "${RED}[+] Installing notify${NC}"
+GO111MODULE=on go get -v github.com/projectdiscovery/notify/cmd/notify
 #mv ~/go/bin/assetfinder /usr/local/bin
 
 #Install assetfinder
@@ -240,9 +256,9 @@ curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/t
 chmod 755 msfinstall && ./msfinstall
 
 #Install Axiom
-echo -e "${RED}[+] Installing Axiom${NC}"
-cd /tmp
-bash <(curl -s https://raw.githubusercontent.com/pry0cc/axiom/master/interact/axiom-configure)
+#echo -e "${RED}[+] Installing Axiom${NC}"
+#cd /tmp
+#bash <(curl -s https://raw.githubusercontent.com/pry0cc/axiom/master/interact/axiom-configure)
 
 
 if [ $USER == 'root' ]; then
