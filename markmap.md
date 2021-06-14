@@ -56,6 +56,7 @@
 
 ### Vulnerability Scanners
 - nuclei
+- DalFox
 
 ## Wordlists Suggested
 - KiteRunner

@@ -195,7 +195,7 @@ git clone https://github.com/maurosoria/dirsearch.git
 cd dirsearch
 pip3 install -r requirements.txt
 chmod +x dirsearch.py
-ln -s ${TOOLSPATH}/dirsearch.py /usr/local/bin/dirsearch
+ln -s ${TOOLSPATH}/dirsearch/dirsearch.py /usr/local/bin/dirsearch
 
 #Install TurboSearch
 echo -e "${RED}[+] Installing TurboSearch${NC}"
@@ -203,7 +203,7 @@ cd ${TOOLSPATH}
 git clone https://github.com/helviojunior/turbosearch.git
 cd turbosearch
 chmod +x turbosearch.py
-ln -s ${TOOLSPATH}/turbosearch.py /usr/local/bin/turbosearch
+ln -s ${TOOLSPATH}/turbosearch/turbosearch.py /usr/local/bin/turbosearch
 
 #Install Git-Dorker
 echo -e "${RED}[+] Installing GitDorker${NC}"
@@ -212,12 +212,25 @@ git clone https://github.com/obheda12/GitDorker.git
 cd GitDorker
 pip3 install -r requirements.txt
 chmod +x chmod +x GitDorker.py
-ln -s ${TOOLSPATH}/GitDorker.py /usr/local/bin/GitDorker
+ln -s ${TOOLSPATH}/GitDorker/GitDorker.py /usr/local/bin/gitdorker
 
-## Install nuclei
+# Install nuclei
+echo -e "${RED}[+] Installing nuclei${NC}"
 GO111MODULE=on go get -v github.com/projectdiscovery/nuclei/v2/cmd/nuclei
 ~/go/bin/nuclei -update-templates
 
+# Install dalfox
+echo -e "${RED}[+] Installing DalFox${NC}"
+snap install dalfox
+
+#Install JsScanner
+echo -e "${RED}[+] Installing JsScanner${NC}"
+cd ${TOOLSPATH}
+git clone https://github.com/0x240x23elu/JSScanner.git
+cd JSScanner
+pip3 install -r requirements.txt
+chmod +x JSScanner.py
+ln -s ${TOOLSPATH}/JSScanner/JSScanner.py /usr/local/bin/jsscanner
 
 if [ $USER == 'root' ]; then
     mv /root/go/bin/* /usr/local/bin
