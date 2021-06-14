@@ -32,8 +32,8 @@ mkdir /opt/wordlists
 #=============================================================================================
 echo -e "${RED}[+] Installing all requirements${NC}"
 #Installing packages
-apt-get update
-apt dist-upgrade
+apt-get update 
+apt dist-upgrade -y 
 apt-get install zsh curl net-tools libpcap-dev htop vim gzip zip git python3-pip python-is-python3 jq tmux snap grepcidr nmap masscan brutespray prips azure-cli -y
 
 
@@ -44,6 +44,7 @@ cd ~ && wget https://raw.githubusercontent.com/0xtiago/dotfiles/master/tmux/.tmu
 sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 #change zshrc theme
 sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="gentoo"/g' ~/.zshrc
+source ~/.zshrc
 
 
 
