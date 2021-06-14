@@ -37,18 +37,6 @@ apt dist-upgrade -y
 apt-get install zsh curl net-tools libpcap-dev htop vim gzip zip git python3-pip python-is-python3 jq tmux snap grepcidr nmap masscan brutespray prips azure-cli -y
 
 
-echo -e "${RED}[+] Installing all new bash environment, ohmyzsh and tmux config ${NC}"
-#Add my tmux profile
-cd ~ && wget https://raw.githubusercontent.com/0xtiago/dotfiles/master/tmux/.tmux.conf
-## Install ohmyzsh
-sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-#change zshrc theme
-sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="gentoo"/g' ~/.zshrc
-source ~/.zshrc
-
-
-
-
 #Installing newer GO
 echo -e "${RED}[+] Installing new version of Golang${NC}"
 apt purge golang -y
@@ -269,3 +257,13 @@ else
 fi
 
 echo -e "${GREEN}[+] DONE${NC}"
+
+
+echo -e "${RED}[+] Installing all new bash environment, ohmyzsh and tmux config ${NC}"
+#Add my tmux profile
+cd ~ && wget https://raw.githubusercontent.com/0xtiago/dotfiles/master/tmux/.tmux.conf
+## Install ohmyzsh
+sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+#change zshrc theme
+sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="gentoo"/g' ~/.zshrc
+source ~/.zshrc
