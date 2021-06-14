@@ -32,7 +32,8 @@ mkdir /opt/wordlists
 #=============================================================================================
 echo -e "${RED}[+] Installing all requirements${NC}"
 #Installing packages
-apt-get update && apt-get install net-tools libpcap-dev htop vim gzip zip git python3-pip python-is-python3 jq tmux snap grepcidr nmap masscan brutespray prips -y
+apt-dist upgrade
+apt-get update && apt-get install curl net-tools libpcap-dev htop vim gzip zip git python3-pip python-is-python3 jq tmux snap grepcidr nmap masscan brutespray prips azure-cli -y
 
 #Installing newer GO
 apt purge golang -y
@@ -231,6 +232,18 @@ cd JSScanner
 pip3 install -r requirements.txt
 chmod +x JSScanner.py
 ln -s ${TOOLSPATH}/JSScanner/JSScanner.py /usr/local/bin/jsscanner
+
+## Install Metasploit
+echo -e "${RED}[+] Installing Metasploit${NC}"
+cd /tmp 
+curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/templates/metasploit-framework-wrappers/msfupdate.erb > msfinstall
+chmod 755 msfinstall && ./msfinstall
+
+#Install Axiom
+echo -e "${RED}[+] Installing Axiom${NC}"
+cd /tmp
+bash <(curl -s https://raw.githubusercontent.com/pry0cc/axiom/master/interact/axiom-configure)
+
 
 if [ $USER == 'root' ]; then
     mv /root/go/bin/* /usr/local/bin

@@ -57,6 +57,14 @@
 ### Vulnerability Scanners
 - nuclei
 - DalFox
+- JSScanner
+
+### Frameworks
+- Axiom
+- Metasploit
+
+### Alerts
+- Notify
 
 ## Wordlists Suggested
 - KiteRunner
