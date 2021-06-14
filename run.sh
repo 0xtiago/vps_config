@@ -2,6 +2,7 @@
 
 LOCALPATH=$(pwd)
 TOOLSPATH=$(/opt/tools)
+WLPATH=$(/opt/wordlists)
 
 #COLORS
 #========================================
@@ -24,12 +25,14 @@ fi
 #Creating tools directory
 mkdir /opt/tools
 
+#Creating wordlists directory
+mkdir /opt/wordlists
 
 
 #=============================================================================================
 echo -e "${RED}[+] Installing all requirements${NC}"
 #Installing packages
-apt-get update && apt-get install net-tools libpcap-dev htop vim gzip zip git python3-pip jq tmux snap grepcidr nmap masscan brutespray prips -y
+apt-get update && apt-get install net-tools libpcap-dev htop vim gzip zip git python3-pip python-is-python3 jq tmux snap grepcidr nmap masscan brutespray prips -y
 
 #Installing newer GO
 apt purge golang -y
@@ -87,9 +90,19 @@ echo -e "${RED}[+] Installing hacktrails${NC}"
 go get github.com/hakluke/haktrails
 
 #Install httpx
-echo -e "${RED}[+] Installing httpx and httprobe ${NC}"
+echo -e "${RED}[+] Installing httpx, httprobe, burl and anti-burl ${NC}"
 GO111MODULE=on go get -v github.com/projectdiscovery/httpx/cmd/httpx
 go get -u github.com/tomnomnom/httprobe
+go get github.com/tomnomnom/burl
+
+#AntiBurl
+cd ${TOOLSPATH} 
+wget https://raw.githubusercontent.com/tomnomnom/hacks/master/anti-burl/main.go
+go build main.go
+rm -rf main.go
+mv main anti-burl ; chmod +x anti-burl
+ln -s $TOOLSPATH/anti-burl /usr/local/anti-burl
+
 
 #Install gowitness
 echo -e "${RED}[+] Installing gowitness ${NC}"
@@ -126,22 +139,56 @@ cd /tmp ; git clone https://github.com/1ndianl33t/Gf-Patterns ; cd Gf-Patterns ;
 
 #Install ParamSpider
 echo -e "${RED}[+] Installing paramspider${NC}"
+cd ${TOOLSPATH}
 git clone https://github.com/devanshbatham/ParamSpider
 cd ParamSpider
 pip3 install -r requirements.txt
-ln -s /opt/tools/ParamSpider/paramspider.py /usr/local/bin/paramspider
+ln -s ${TOOLSPATH}/ParamSpider/paramspider.py /usr/local/bin/paramspider
+
+#Install Linkfinder and Collector
+#Linkfinder
+echo -e "${RED}[+] Installing LinkDinder and collector ${NC}"
+cd ${TOOLSPATH}
+git clone https://github.com/GerbenJavado/LinkFinder
+cd LinkFinder
+pip3 install -r requirements.txt
+python3 setup.py install
+ln -s ${TOOLSPATH}/LinkFinder/linkfinder.py /usr/local/bin/linkfinder
+#Collector
+cd ${TOOLSPATH}
+wget https://raw.githubusercontent.com/m4ll0k/Bug-Bounty-Toolz/master/collector.py
+sed -i '#!/usr/bin/env python3' collector.py
+chmod +x collector.py
+ln -s ${TOOLSPATH}/collector.py /usr/local/bin/collector.py
+
 
 #Install unfurl
 echo -e "${RED}[+] Installing unfurl${NC}"
 go get -u github.com/tomnomnom/unfurl
 
-#Install ffuf
-echo -e "${RED}[+] Installing ffuf${NC}"
-go get -u github.com/ffuf/ffuf
 
 #Install arjun
 echo -e "${RED}[+] Installing arjun${NC}"
 pip3 install arjun
+
+#Install subjs
+echo -e "${RED}[+] Installing subjs${NC}"
+GO111MODULE=on go get -u -v github.com/lc/subjs
+
+
+#Install ffuf
+echo -e "${RED}[+] Installing ffuf${NC}"
+go get -u github.com/ffuf/ffuf
+
+#Install kiterunner
+echo -e "${RED}[+] Installing KiteRunner${NC}"
+cd ${TOOLSPATH}
+wget https://github.com/assetnote/kiterunner/releases/download/v1.0.2/kiterunner_1.0.2_linux_amd64.tar.gz
+tar xvzf kiterunner_1.0.2_linux_amd64.tar.gz
+chmod +x kr 
+ln -s ${TOOLSPATH}/kr /usr/local/bin/kr
+
+
 
 
 if [ $USER == 'root' ]; then

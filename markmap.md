@@ -11,7 +11,6 @@
 - naabu
 
 ## Subdomain
-
 - Assetfinder
 - Subfinder
 - Amass
@@ -20,11 +19,16 @@
 - Github
 - crt.sh
 - Haktrails
-- fuff (Also for subdirs)
 
-## Check subdomain status
+## Bruteforcing (Subdomain, Subdirs and Endpoints)
+- fuff 
+- KiteRunner
+
+## Check subdomain and endpoints status
 - httpx
-- httpprobe
+- httprobe
+- burl
+- anti-burl
 - gowitness
 
 ## Endpoint enumeration
@@ -36,7 +40,13 @@
 - Waybackurl
 - gau
 - gauplus
+- subjs (JavaScript)
+- LinkFinder (JavaScript)
+- Collector (For LinkFinder)
 
 ## ASN Enum
 - Metabigor
 - hakrevdns
+
+# Wordlists
+- KiteRunner
