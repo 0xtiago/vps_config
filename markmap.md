@@ -1,15 +1,17 @@
-# Tools
+# vps_config
 
-## Languages
+## Recon Tools
+
+### Languages
 - Python3
 - Golang
 
-## Port Scan
+### Port Scan
 - Nmap
 - Masscan
 - naabu
 
-## Subdomain
+### Subdomain
 - Assetfinder
 - Subfinder
 - Amass
@@ -19,25 +21,25 @@
 - crt.sh
 - Haktrails
 
-## Bruteforcing (Subdomain, Subdirs and Endpoints)
+### Bruteforcing (Subdomain, Subdirs and Endpoints)
 - fuff 
 - KiteRunner
 - dirsearch
 - turbosearch
 
-## Check subdomain and endpoints status
+### Check subdomain and endpoints status
 - httpx
 - httprobe
 - burl
 - anti-burl
 - gowitness
 
-## Endpoint enumeration
+### Endpoint enumeration
 - gf
 - ParamSpider
 - unfurl
 
-## Crawlers
+### Crawlers
 - Waybackurl
 - gau
 - gauplus
@@ -45,17 +47,17 @@
 - LinkFinder (JavaScript)
 - Collector (For LinkFinder)
 
-## ASN Enum
+### ASN Enum
 - Metabigor
 - hakrevdns
 
-## Secrets
+### Secrets
 - GitDorker
 
-## Vulnerability Scanners
+### Vulnerability Scanners
 - nuclei
 
-# Wordlists Suggested
+## Wordlists Suggested
 - KiteRunner
 - AssetNote
 - SecLists
