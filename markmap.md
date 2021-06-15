@@ -65,6 +65,7 @@
 
 ### Alerts
 - Notify
+- telegram-send
 
 ## Wordlists Suggested
 - KiteRunner

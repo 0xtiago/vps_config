@@ -53,16 +53,16 @@ go version
 go get -u github.com/tomnomnom/anew
 #sudo mv ~/go/bin/anew /usr/local/bin
 
-# Install google chorome
-cd /tmp
-wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-apt install ./google-chrome-stable_current_amd64.deb -y 
-
 
 #Install notify
 echo -e "${RED}[+] Installing notify${NC}"
 GO111MODULE=on go get -v github.com/projectdiscovery/notify/cmd/notify
 #mv ~/go/bin/assetfinder /usr/local/bin
+
+## Install telegram-send
+echo -e "${RED}[+] Installing telegram-send${NC}"
+pip3 install telegram-send
+
 
 #Install Subfinder
 echo -e "${RED}[+] Installing subfinder${NC}"
@@ -114,11 +114,15 @@ ln -s $TOOLSPATH/anti-burl /usr/local/anti-burl
 
 
 #Install gowitness
-echo -e "${RED}[+] Installing gowitness ${NC}"
+echo -e "${RED}[+] Installing gowitness and Google Chrome${NC}"
 #go get -v github.com/sensepost/gowitnes
 cd $TOOLSPATH ; wget https://github.com/sensepost/gowitness/releases/download/2.3.6/gowitness-2.3.6-linux-amd64
 chmod +x gowitness-2.3.6-linux-amd64
 ln -s $TOOLSPATH/gowitness-2.3.6-linux-amd64 /usr/local/bin/gowitness
+# Install google chrome
+cd /tmp
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+apt install ./google-chrome-stable_current_amd64.deb -y 
 
 
 #Install waybackurls
