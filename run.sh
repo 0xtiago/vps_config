@@ -53,7 +53,10 @@ go version
 go get -u github.com/tomnomnom/anew
 #sudo mv ~/go/bin/anew /usr/local/bin
 
-
+# Install google chorome
+cd /tmp
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+apt install ./google-chrome-stable_current_amd64.deb -y 
 
 
 #Install notify
@@ -61,7 +64,7 @@ echo -e "${RED}[+] Installing notify${NC}"
 GO111MODULE=on go get -v github.com/projectdiscovery/notify/cmd/notify
 #mv ~/go/bin/assetfinder /usr/local/bin
 
-#Install assetfinder
+#Install Subfinder
 echo -e "${RED}[+] Installing subfinder${NC}"
 GO111MODULE=on go get -v github.com/projectdiscovery/subfinder/v2/cmd/subfinder
 #mv ~/go/bin/subfinder /usr/local/bin
