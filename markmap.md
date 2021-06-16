@@ -29,6 +29,7 @@
 - turbosearch
 
 ### Check subdomain and endpoints status
+- dnsx
 - httpx
 - httprobe
 - burl

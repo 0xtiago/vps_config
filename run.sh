@@ -145,6 +145,10 @@ echo -e "${RED}[+] Installing metabigor and hakrevdns ${NC}"
 GO111MODULE=on go get github.com/j3ssie/metabigor
 go get github.com/hakluke/hakrevdns
 
+#Install dnsx
+echo -e "${RED}[+] Installing dnsx ${NC}"
+GO111MODULE=on go get -v github.com/projectdiscovery/dnsx/cmd/dnsx
+
 #Install naabu 
 echo -e "${RED}[+] Installing naabu ${NC}"
 GO111MODULE=on go get -v github.com/projectdiscovery/naabu/v2/cmd/naabu
@@ -284,7 +288,14 @@ sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools
 sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="gentoo"/g' ~/.zshrc
 #Add golang bin dir to $PATH.
 echo "export PATH=$PATH:/usr/local/go/bin" >> ~/.zshrc
+
+#TMux configuration
 echo "#Run TMUX automatically" >> ~/.zshrc
-echo "tmux" >> ~/.zshrc
+cat <<EOF >> ~/.zshrc
+if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
+    tmux attach -t default || tmux new -s default
+fi
+EOF
+
 
 source ~/.zshrc
