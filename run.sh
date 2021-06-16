@@ -107,13 +107,19 @@ GO111MODULE=on go get -v github.com/projectdiscovery/httpx/cmd/httpx
 go get -u github.com/tomnomnom/httprobe
 go get github.com/tomnomnom/burl
 
+cd ${TOOLSPATH} 
+https://github.com/r3curs1v3-pr0xy/sub404.git
+cd sub404
+pip3 install -r requirements.txt
+ln -s $TOOLSPATH/sub404/sub404.py /usr/local/bin/sub404
+
 #AntiBurl
 cd ${TOOLSPATH} 
 wget https://raw.githubusercontent.com/tomnomnom/hacks/master/anti-burl/main.go
 go build main.go
 rm -rf main.go
 mv main anti-burl ; chmod +x anti-burl
-ln -s $TOOLSPATH/anti-burl /usr/local/anti-burl
+ln -s $TOOLSPATH/anti-burl /usr/local/bin/anti-burl
 
 
 #Install gowitness
@@ -278,5 +284,7 @@ sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools
 sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="gentoo"/g' ~/.zshrc
 #Add golang bin dir to $PATH.
 echo "export PATH=$PATH:/usr/local/go/bin" >> ~/.zshrc
+echo "#Run TMUX automatically" >> ~/.zshrc
+echo "tmux" >> ~/.zshrc
 
 source ~/.zshrc
