@@ -20,6 +20,7 @@
 - Github
 - crt.sh
 - Haktrails
+- sub404 (Subdomain TakeOver)
 
 ### Bruteforcing (Subdomain, Subdirs and Endpoints)
 - fuff 
