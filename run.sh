@@ -108,7 +108,7 @@ go get -u github.com/tomnomnom/httprobe
 go get github.com/tomnomnom/burl
 
 cd ${TOOLSPATH} 
-https://github.com/r3curs1v3-pr0xy/sub404.git
+git clone https://github.com/r3curs1v3-pr0xy/sub404.git
 cd sub404
 pip3 install -r requirements.txt
 ln -s $TOOLSPATH/sub404/sub404.py /usr/local/bin/sub404
