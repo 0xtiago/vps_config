@@ -111,6 +111,7 @@ cd ${TOOLSPATH}
 git clone https://github.com/r3curs1v3-pr0xy/sub404.git
 cd sub404
 pip3 install -r requirements.txt
+chmod +x sub404.py
 ln -s $TOOLSPATH/sub404/sub404.py /usr/local/bin/sub404
 
 #AntiBurl
@@ -173,7 +174,7 @@ ln -s ${TOOLSPATH}/ParamSpider/paramspider.py /usr/local/bin/paramspider
 
 #Install Linkfinder and Collector
 #Linkfinder
-echo -e "${RED}[+] Installing LinkDinder and collector ${NC}"
+echo -e "${RED}[+] Installing LinkFinder and collector ${NC}"
 cd ${TOOLSPATH}
 git clone https://github.com/GerbenJavado/LinkFinder
 cd LinkFinder
@@ -239,6 +240,10 @@ cd GitDorker
 pip3 install -r requirements.txt
 chmod +x chmod +x GitDorker.py
 ln -s ${TOOLSPATH}/GitDorker/GitDorker.py /usr/local/bin/gitdorker
+
+#Install Git-dumper
+echo -e "${RED}[+] Installing Git-dumper${NC}"
+pip install git-dumper
 
 # Install nuclei
 echo -e "${RED}[+] Installing nuclei${NC}"
