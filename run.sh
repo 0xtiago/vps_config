@@ -150,6 +150,10 @@ go get github.com/hakluke/hakrevdns
 echo -e "${RED}[+] Installing dnsx ${NC}"
 GO111MODULE=on go get -v github.com/projectdiscovery/dnsx/cmd/dnsx
 
+#Install mapcidr
+echo -e "${RED}[+] Installing mapcidr ${NC}"
+GO111MODULE=on go get -v github.com/projectdiscovery/mapcidr/cmd/mapcidr
+
 #Install naabu 
 echo -e "${RED}[+] Installing naabu ${NC}"
 GO111MODULE=on go get -v github.com/projectdiscovery/naabu/v2/cmd/naabu
