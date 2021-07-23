@@ -37,7 +37,7 @@ echo -e "${RED}[+] Installing all requirements${NC}"
 #Installing packages
 apt-get update 
 apt dist-upgrade -y 
-apt-get install zsh p7zip curl net-tools locate libpcap-dev htop vim gzip zip git python3-pip python-is-python3 jq tmux snap grepcidr nmap masscan brutespray prips azure-cli -y
+apt-get install zsh p7zip curl sqlmap john net-tools locate libpcap-dev htop vim gzip ruby-dev zip git python3-pip python-is-python3 jq tmux snap grepcidr nmap masscan brutespray prips azure-cli -y
 
 
 #Installing newer GO
@@ -60,7 +60,8 @@ go get -u github.com/tomnomnom/anew
 #Install notify
 echo -e "${RED}[+] Installing notify${NC}"
 GO111MODULE=on go get -v github.com/projectdiscovery/notify/cmd/notify
-#mv ~/go/bin/assetfinder /usr/local/bin
+
+
 
 ## Install telegram-send
 echo -e "${RED}[+] Installing telegram-send${NC}"
@@ -75,6 +76,12 @@ GO111MODULE=on go get -v github.com/projectdiscovery/subfinder/v2/cmd/subfinder
 #Install amass
 echo -e "${RED}[+] Installing amass${NC}"
 snap install amass
+
+#Install assetfinder
+echo -e "${RED}[+] Installing assetfinder${NC}"
+go get -u github.com/tomnomnom/assetfinder
+#mv ~/go/bin/assetfinder /usr/local/bin
+
 
 #Install findomains
 echo -e "${RED}[+] Installing findomain${NC}"
@@ -107,12 +114,28 @@ GO111MODULE=on go get -v github.com/projectdiscovery/httpx/cmd/httpx
 go get -u github.com/tomnomnom/httprobe
 go get github.com/tomnomnom/burl
 
+#Install sub404
+echo -e "${RED}[+] Installing sub404 ${NC}"
 cd ${TOOLSPATH} 
 git clone https://github.com/r3curs1v3-pr0xy/sub404.git
 cd sub404
 pip3 install -r requirements.txt
 chmod +x sub404.py
 ln -s $TOOLSPATH/sub404/sub404.py /usr/local/bin/sub404
+
+
+#Install massdns
+echo -e "${RED}[+] Installing massdns ${NC}"
+cd ${TOOLSPATH} 
+git clone https://github.com/blechschmidt/massdns.git
+cd massdns
+make && make nolinux
+ln -s $TOOLSPATH/massdns/bin/massdns /usr/local/bin/massdns
+
+#Install shuffledns
+echo -e "${RED}[+] Installing massdns ${NC}"
+GO111MODULE=on go get -v github.com/projectdiscovery/shuffledns/cmd/shuffledns
+
 
 #AntiBurl
 cd ${TOOLSPATH} 
@@ -160,12 +183,15 @@ GO111MODULE=on go get -v github.com/projectdiscovery/naabu/v2/cmd/naabu
 
 #Install gf 
 echo -e "${RED}[+] Installing and configuring gf ${NC}"
-go get -u github.com/tomnomnom/gf
-echo 'source $GOPATH/src/github.com/tomnomnom/gf/gf-completion.bash' >> ~/.bashrc
-source ~/.bashrc
+cd ${TOOLSPATH}
+git clone https://github.com/tomnomnom/gf.git
+cd gf
+go build main.go
+mv main gf
+
 #Configuring gf patterns
 mkdir ~/.gf
-cp -r $GOPATH/src/github.com/tomnomnom/gf/examples ~/.gf
+cp -r examples/* ~/.gf
 cd /tmp ; git clone https://github.com/1ndianl33t/Gf-Patterns ; cd Gf-Patterns ; cp *.json ~/.gf
 
 #Install ParamSpider
@@ -191,6 +217,18 @@ wget https://raw.githubusercontent.com/m4ll0k/Bug-Bounty-Toolz/master/collector.
 sed -i '#!/usr/bin/env python3' collector.py
 chmod +x collector.py
 ln -s ${TOOLSPATH}/collector.py /usr/local/bin/collector.py
+
+#Install Hakrawler
+echo -e "${RED}[+] Installing Hakcrawler${NC}"
+go get github.com/hakluke/hakrawler
+
+#Install GoSpider
+echo -e "${RED}[+] Installing GoSpider${NC}"
+GO111MODULE=on go get -u github.com/jaeles-project/gospider
+
+#Install GoSpider
+echo -e "${RED}[+] Installing qsreplace${NC}"
+go get -u github.com/tomnomnom/qsreplace
 
 
 #Install unfurl
@@ -266,6 +304,11 @@ cd JSScanner
 pip3 install -r requirements.txt
 chmod +x JSScanner.py
 ln -s ${TOOLSPATH}/JSScanner/JSScanner.py /usr/local/bin/jsscanner
+
+
+# Install wpscan
+echo -e "${RED}[+] Installing WPScan${NC}"
+ gem install wpscan
 
 ## Install Metasploit
 echo -e "${RED}[+] Installing Metasploit${NC}"
