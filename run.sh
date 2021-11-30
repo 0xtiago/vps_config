@@ -331,23 +331,23 @@ fi
 echo -e "${GREEN}[+] DONE${NC}"
 
 
-echo -e "${RED}[+] Installing all new bash environment, ohmyzsh and tmux config ${NC}"
+#echo -e "${RED}[+] Installing all new bash environment, ohmyzsh and tmux config ${NC}"
 #Add my tmux profile
-cd ~ && wget https://raw.githubusercontent.com/0xtiago/dotfiles/master/tmux/.tmux.conf
+#cd ~ && wget https://raw.githubusercontent.com/0xtiago/dotfiles/master/tmux/.tmux.conf
 ## Install ohmyzsh
-sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+#sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 #change zshrc theme
-sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="gentoo"/g' ~/.zshrc
+#sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="gentoo"/g' ~/.zshrc
 #Add golang bin dir to $PATH.
-echo "export PATH=$PATH:/usr/local/go/bin" >> ~/.zshrc
+#echo "export PATH=$PATH:/usr/local/go/bin" >> ~/.zshrc
 
 #TMux configuration
-echo "#Run TMUX automatically" >> ~/.zshrc
-cat <<EOF >> ~/.zshrc
-if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
-    tmux attach -t default || tmux new -s default
-fi
-EOF
+#echo "#Run TMUX automatically" >> ~/.zshrc
+#cat <<EOF >> ~/.zshrc
+#if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
+#    tmux attach -t default || tmux new -s default
+#fi
+#EOF
 
 
-source ~/.zshrc
+#source ~/.zshrc
