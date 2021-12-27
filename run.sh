@@ -37,7 +37,7 @@ echo -e "${RED}[+] Installing all requirements${NC}"
 #Installing packages
 apt-get update 
 apt dist-upgrade -y 
-apt-get install default-jre zsh p7zip curl sqlmap john net-tools locate libpcap-dev htop vim gzip ruby-dev zip git python3-pip python-is-python3 jq tmux snap grepcidr nmap masscan brutespray prips azure-cli -y
+apt-get install default-jre zsh p7zip curl sqlmap john net-tools locate libpcap-dev htop vim gzip ruby-dev zip git python3-pip python-is-python3 jq tmux snap grepcidr nmap masscan brutespray prips azure-cli fonts-powerline -y
 
 
 #Installing newer GO
