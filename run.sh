@@ -333,7 +333,7 @@ echo -e "${GREEN}[+] DONE${NC}"
 
 #echo -e "${RED}[+] Installing all new bash environment, ohmyzsh and tmux config ${NC}"
 #Add my tmux profile
-#cd ~ && wget https://raw.githubusercontent.com/0xtiago/dotfiles/master/tmux/.tmux.conf
+cd ~ && wget https://raw.githubusercontent.com/0xtiago/dotfiles/master/tmux/.tmux.conf
 ## Install ohmyzsh
 #sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 #change zshrc theme
