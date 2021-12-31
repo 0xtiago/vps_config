@@ -289,7 +289,7 @@ pip install git-dumper
 
 # Install nuclei
 echo -e "${RED}[+] Installing nuclei${NC}"
-GO111MODULE=on go get -v github.com/projectdiscovery/nuclei/v2/cmd/nuclei
+go install -v github.com/projectdiscovery/nuclei/v2/cmd/nuclei@latest
 ~/go/bin/nuclei -update-templates
 
 # Install dalfox
