@@ -315,6 +315,8 @@ echo -e "${RED}[+] Installing Metasploit${NC}"
 cd /tmp 
 curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/templates/metasploit-framework-wrappers/msfupdate.erb > msfinstall
 chmod 755 msfinstall && ./msfinstall
+# update - Need only for later usage
+msfupdate
 
 #Install Axiom
 #echo -e "${RED}[+] Installing Axiom${NC}"
