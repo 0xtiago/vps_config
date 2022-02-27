@@ -52,6 +52,11 @@ export PATH=$PATH:/usr/local/go/bin
 #export GOROOT=/usr/local/go
 go version
 
+# Installing RustScan
+wget https://github.com/RustScan/RustScan/releases/download/2.0.1/rustscan_2.0.1_amd64.deb -O /tmp/rustscan.deb
+dpkg -i /tmp/rustscan.deb
+
+
 #Installing anew
 go get -u github.com/tomnomnom/anew
 #sudo mv ~/go/bin/anew /usr/local/bin
