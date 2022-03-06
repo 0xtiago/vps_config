@@ -297,6 +297,10 @@ echo -e "${RED}[+] Installing nuclei${NC}"
 go install -v github.com/projectdiscovery/nuclei/v2/cmd/nuclei@latest
 ~/go/bin/nuclei -update-templates
 
+# Install nrich
+cd /tmp && wget https://gitlab.com/api/v4/projects/33695681/packages/generic/nrich/latest/nrich_latest_amd64.deb
+dpkg -i nrich_latest_amd64.deb
+
 # Install dalfox
 echo -e "${RED}[+] Installing DalFox${NC}"
 snap install dalfox
@@ -340,7 +344,7 @@ echo -e "${GREEN}[+] DONE${NC}"
 
 #echo -e "${RED}[+] Installing all new bash environment, ohmyzsh and tmux config ${NC}"
 #Add my tmux profile
-cd ~ && wget https://raw.githubusercontent.com/0xtiago/dotfiles/master/tmux/.tmux.conf
+cd ~ && https://raw.githubusercontent.com/0xtiago/dotfiles/master/tmux/.tmux.conf
 ## Install ohmyzsh
 #sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 #change zshrc theme
