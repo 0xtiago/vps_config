@@ -319,6 +319,10 @@ ln -s ${TOOLSPATH}/JSScanner/JSScanner.py /usr/local/bin/jsscanner
 echo -e "${RED}[+] Installing WPScan${NC}"
  gem install wpscan
 
+# Install URO
+echo -e "${RED}[+] Installing URO${NC}"
+ pip3 install uro
+
 ## Install Metasploit
 echo -e "${RED}[+] Installing Metasploit${NC}"
 cd /tmp 
