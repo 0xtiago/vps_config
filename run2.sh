@@ -7,11 +7,6 @@ callRequirements(){
 }
 
 setupEnvironment() {
-    echo -e "${RED}[+]${FUNCNAME[0]}${NC}"
-    LOCALPATH=$(pwd)
-    TOOLSPATH="/opt/tools"
-    WLPATH="/opt/wordlists"
-
     #Cores
     #========================================
     #https://www.shellhacks.com/bash-colors/
@@ -22,6 +17,11 @@ setupEnvironment() {
     YELLOW='\e[33m'
     NC='\e[0m' # No Color
     #========================================
+
+    echo -e "${RED}[+]${FUNCNAME[0]}${NC}"
+    LOCALPATH=$(pwd)
+    TOOLSPATH="/opt/tools"
+    WLPATH="/opt/wordlists"
 
     #Diretorio de ferramentas
     mkdir /opt/tools
