@@ -165,7 +165,7 @@ ffuf(){
     go get -u github.com/ffuf/ffuf
 }
 
-Findomains()){
+Findomains(){
     echo -e "${RED}[+]${FUNCNAME[0]}${NC}"
     cd /tmp
     wget https://github.com/findomain/findomain/releases/latest/download/findomain-linux
@@ -497,8 +497,10 @@ callPosInstalacao(){
 
 #Root or Sudoer verifying.
 if [[ $(id -u) != 0 ]]; then
-    echo -e "\n[!] Install.sh need to run as root or sudoer"
+    echo -e "\n[!] Script precisa ser executado como sudoer ou root!"
     exit 0
 else
     callRequirements
+    callInstallTools
+    callPosInstalacao
 fi
