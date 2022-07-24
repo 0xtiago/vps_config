@@ -69,6 +69,7 @@ setupOSRequirements (){
 }
 
 setupGolang () {
+    echo -e "${RED}[+]${FUNCNAME[0]}${NC}"
     #Installing newer GO
     #https://miek.nl/2020/july/17/script-to-upgrade-to-latest-go-version/
     local LATEST=$(curl -s 'https://golang.org/dl/?mode=json' | jq -r '.[0].version')
