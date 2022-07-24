@@ -70,16 +70,22 @@ setupOSRequirements (){
 
 setupGolang () {
     #Installing newer GO
-    echo -e "${RED}[+]${FUNCNAME[0]}${NC}"
-    apt purge golang -y
-    apt autoremove golang -y
-    cd /tmp
-    wget https://go.dev/dl/go1.18.4.linux-amd64.tar.gz
-    rm -rf /usr/local/go && tar -C /usr/local -xzf go1.18.4.linux-amd64.tar.gz
+    #https://miek.nl/2020/july/17/script-to-upgrade-to-latest-go-version/
+    local LATEST=$(curl -s 'https://golang.org/dl/?mode=json' | jq -r '.[0].version')
+    local INSTALLED=$(go version | awk '{ print $3 }')
+    if [[ ${INSTALLED} == ${LATEST} ]]; then
+        echo Go is up to date, running ${LATEST} >&2
+        exit 0
+    fi
+    echo Upgrading Go from ${INSTALLED} to ${LATEST} >&2
+    local GOLANG=https://dl.google.com/go/${LATEST}.linux-amd64.tar.gz
+    local TAR=$(basename $GOLANG)
+
+    ( cd ${GODIR}
+      echo Downloading and extracting: $GOLANG >&2
+      wget -q $GOLANG && rm -rf go && tar xvfz ${TAR}
+    )
     export PATH=$PATH:/usr/local/go/bin
-    #echo "export PATH=$PATH:/usr/local/go/bin:/home/$SUDO_USER/go/bin" >> ~/.bashrc
-    #export GOROOT=/usr/local/go
-    go version
 }
 
 
