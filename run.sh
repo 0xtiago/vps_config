@@ -45,7 +45,7 @@ echo -e "${RED}[+] Installing new version of Golang${NC}"
 apt purge golang -y
 apt autoremove golang -y
 cd /tmp
-wget https://golang.org/dl/go1.16.5.linux-amd64.tar.gz
+wget https://go.dev/dl/go1.18.4.linux-amd64.tar.gz
 rm -rf /usr/local/go && tar -C /usr/local -xzf go1.16.5.linux-amd64.tar.gz
 export PATH=$PATH:/usr/local/go/bin
 #echo "export PATH=$PATH:/usr/local/go/bin:/home/$SUDO_USER/go/bin" >> ~/.bashrc
