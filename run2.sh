@@ -1,10 +1,6 @@
 #!/bin/bash
 
-callRequirements(){
-    setupEnvironment
-    setupOSRequirements
-    setupGolang
-}
+#INICIO DE INSTALACAO DE PRE-REQUISITOS #################################
 
 setupEnvironment() {
     #Cores
@@ -91,7 +87,413 @@ setupGolang () {
     export PATH=$PATH:/usr/local/go/bin
     go version
 }
+#FIM DE INSTALACAO DE PRE-REQUISITOS #################################
 
+#INICIO DE INSTALAÇÃO DE FERRAMENTAS #################################
+
+Amass(){
+    echo -e "${RED}[+]${FUNCNAME[0]}${NC}"
+    snap install amass
+}
+
+Anew(){
+    echo -e "${RED}[+]${FUNCNAME[0]}${NC}"
+    go get -u github.com/tomnomnom/anew
+}
+
+Antiburl(){
+    echo -e "${RED}[+]${FUNCNAME[0]}${NC}"
+    cd ${TOOLSPATH} 
+    wget https://raw.githubusercontent.com/tomnomnom/hacks/master/anti-burl/main.go
+    go build main.go
+    rm -rf main.go
+    mv main anti-burl ; chmod +x anti-burl
+    ln -s $TOOLSPATH/anti-burl /usr/local/bin/anti-burl
+}
+
+Arjun(){
+    echo -e "${RED}[+]${FUNCNAME[0]}${NC}"
+    pip3 install arjun
+}
+
+Assetfinder(){
+    echo -e "${RED}[+]${FUNCNAME[0]}${NC}"
+    go get -u github.com/tomnomnom/assetfinder
+}
+
+Burl(){
+    echo -e "${RED}[+]${FUNCNAME[0]}${NC}"
+    go get github.com/tomnomnom/burl
+}
+
+ChaosClient(){
+    echo -e "${RED}[+]${FUNCNAME[0]}${NC}"
+    GO111MODULE=on go get -v github.com/projectdiscovery/chaos-client/cmd/chaos
+}
+
+Collector(){
+    echo -e "${RED}[+]${FUNCNAME[0]}${NC}"
+    cd ${TOOLSPATH}
+    wget https://raw.githubusercontent.com/m4ll0k/Bug-Bounty-Toolz/master/collector.py
+    sed -i '#!/usr/bin/env python3' collector.py
+    chmod +x collector.py
+    ln -s ${TOOLSPATH}/collector.py /usr/local/bin/collector.py
+}
+
+DalFox(){
+    echo -e "${RED}[+]${FUNCNAME[0]}${NC}"
+    snap install dalfox
+}
+
+Dirsearch(){
+    echo -e "${RED}[+]${FUNCNAME[0]}${NC}"
+    cd ${TOOLSPATH}
+    git clone https://github.com/maurosoria/dirsearch.git
+    cd dirsearch
+    pip3 install -r requirements.txt
+    chmod +x dirsearch.py
+    ln -s ${TOOLSPATH}/dirsearch/dirsearch.py /usr/local/bin/dirsearch
+}
+
+Dnsx(){
+    echo -e "${RED}[+]${FUNCNAME[0]}${NC}"
+    GO111MODULE=on go get -v github.com/projectdiscovery/dnsx/cmd/dnsx
+}
+
+ffuf(){
+    echo -e "${RED}[+]${FUNCNAME[0]}${NC}"
+    go get -u github.com/ffuf/ffuf
+}
+
+Findomains()){
+    echo -e "${RED}[+]${FUNCNAME[0]}${NC}"
+    cd /tmp
+    wget https://github.com/findomain/findomain/releases/latest/download/findomain-linux
+    mv findomain-linux findomain
+    mv findomain /usr/local/bin
+    chmod +x /usr/local/bin/findomain
+}
+
+Gf(){
+    echo -e "${RED}[+]${FUNCNAME[0]}${NC}"
+    cd ${TOOLSPATH}
+    git clone https://github.com/tomnomnom/gf.git
+    cd gf
+    go build main.go
+    mv main gf
+
+    mkdir ~/.gf
+    cp -r examples/* ~/.gf
+    cd /tmp ; git clone https://github.com/1ndianl33t/Gf-Patterns ; cd Gf-Patterns ; cp *.json ~/.gf
+}
+
+GithubSearch(){
+    echo -e "${RED}[+]${FUNCNAME[0]}${NC}"
+    cd ${TOOLSPATH}
+    git clone https://github.com/gwen001/github-search.git
+    cd github-search
+    pip3 install -r requirements3.txt
+    ln -s ${TOOLSPATH}/github-search/github-subdomains.py /usr/local/bin/github-subdomains
+}
+
+
+GitDorker(){
+    echo -e "${RED}[+]${FUNCNAME[0]}${NC}"
+    cd ${TOOLSPATH}
+    git clone https://github.com/obheda12/GitDorker.git
+    cd GitDorker
+    pip3 install -r requirements.txt
+    chmod +x chmod +x GitDorker.py
+    ln -s ${TOOLSPATH}/GitDorker/GitDorker.py /usr/local/bin/gitdorker
+}
+
+GitDumper(){
+    echo -e "${RED}[+]${FUNCNAME[0]}${NC}"
+    pip install git-dumper
+}
+
+GoogleChrome(){
+    echo -e "${RED}[+]${FUNCNAME[0]}${NC}"
+    cd /tmp
+    wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+    apt install ./google-chrome-stable_current_amd64.deb -y 
+}
+
+GoSpider(){
+    echo -e "${RED}[+]${FUNCNAME[0]}${NC}"
+    GO111MODULE=on go get -u github.com/jaeles-project/gospider
+}
+
+Gowitness(){
+    echo -e "${RED}[+]${FUNCNAME[0]}${NC}"
+    local GOWITNESS=https://github.com/sensepost/gowitness/releases/download/2.4.0/gowitness-2.4.0-darwin-amd64
+    cd $TOOLSPATH ; wget $GOWITNESS
+    chmod +x $(basename $GOWITNESS)
+    ln -s $TOOLSPATH/$(basename $GOWITNESS) /usr/local/bin/gowitness
+}
+
+Hakrawler(){
+    echo -e "${RED}[+]${FUNCNAME[0]}${NC}"
+    go get github.com/hakluke/hakrawler
+}
+
+Hakrevdns(){
+    echo -e "${RED}[+]${FUNCNAME[0]}${NC}"
+    go get github.com/hakluke/hakrevdns
+}
+
+Haktrails(){
+    echo -e "${RED}[+]${FUNCNAME[0]}${NC}"
+    go get github.com/hakluke/haktrails
+}
+
+Httprobe(){
+    echo -e "${RED}[+]${FUNCNAME[0]}${NC}"
+    go get -u github.com/tomnomnom/httprobe
+}
+
+
+Httpx(){
+    echo -e "${RED}[+]${FUNCNAME[0]}${NC}"
+    GO111MODULE=on go get -v github.com/projectdiscovery/httpx/cmd/httpx
+}
+
+JSScanner(){
+    echo -e "${RED}[+]${FUNCNAME[0]}${NC}"
+    cd ${TOOLSPATH}
+    git clone https://github.com/0x240x23elu/JSScanner.git
+    cd JSScanner
+    pip3 install -r requirements.txt
+    chmod +x JSScanner.py
+    ln -s ${TOOLSPATH}/JSScanner/JSScanner.py /usr/local/bin/jsscanner
+}
+
+Kiterunner(){
+    echo -e "${RED}[+]${FUNCNAME[0]}${NC}"
+    cd ${TOOLSPATH}
+    wget https://github.com/assetnote/kiterunner/releases/download/v1.0.2/kiterunner_1.0.2_linux_amd64.tar.gz
+    tar xvzf kiterunner_1.0.2_linux_amd64.tar.gz
+    chmod +x kr 
+    ln -s ${TOOLSPATH}/kr /usr/local/bin/kr
+}
+
+LinkFinder(){
+    echo -e "${RED}[+]${FUNCNAME[0]}${NC}"
+    cd ${TOOLSPATH}
+    git clone https://github.com/GerbenJavado/LinkFinder
+    cd LinkFinder
+    pip3 install -r requirements.txt
+    python3 setup.py install
+    ln -s ${TOOLSPATH}/LinkFinder/linkfinder.py /usr/local/bin/linkfinder
+}
+
+Mapcidr(){
+    echo -e "${RED}[+]${FUNCNAME[0]}${NC}"
+    GO111MODULE=on go get -v github.com/projectdiscovery/mapcidr/cmd/mapcidr
+}
+
+Massdns(){
+    echo -e "${RED}[+]${FUNCNAME[0]}${NC}"
+    cd ${TOOLSPATH} 
+    git clone https://github.com/blechschmidt/massdns.git
+    cd massdns
+    make && make nolinux
+    ln -s $TOOLSPATH/massdns/bin/massdns /usr/local/bin/massdns
+}
+
+Metabigor(){
+    echo -e "${RED}[+]${FUNCNAME[0]}${NC}"
+    GO111MODULE=on go get github.com/j3ssie/metabigor
+}
+
+Metasploit(){
+    echo -e "${RED}[+]${FUNCNAME[0]}${NC}"
+    cd /tmp 
+    curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/templates/metasploit-framework-wrappers/msfupdate.erb > msfinstall
+    chmod 755 msfinstall && ./msfinstall
+    msfupdate
+}
+
+Naabu(){
+    echo -e "${RED}[+]${FUNCNAME[0]}${NC}"
+    go install -v github.com/projectdiscovery/naabu/v2/cmd/naabu@latest
+}
+
+Notify(){
+    echo -e "${RED}[+]${FUNCNAME[0]}${NC}"
+    GO111MODULE=on go get -v github.com/projectdiscovery/notify/cmd/notify
+}
+
+Nrich(){
+    echo -e "${RED}[+]${FUNCNAME[0]}${NC}"
+    local NRICH=https://gitlab.com/api/v4/projects/33695681/packages/generic/nrich/latest/nrich_latest_amd64.deb
+    cd /tmp && wget $NRICH
+    dpkg -i $(basename $NRICH)
+}
+
+Nuclei(){
+    echo -e "${RED}[+]${FUNCNAME[0]}${NC}"
+    go install -v github.com/projectdiscovery/nuclei/v2/cmd/nuclei@latest
+    ~/go/bin/nuclei -update-templates
+}
+
+ParamSpider(){
+    echo -e "${RED}[+]${FUNCNAME[0]}${NC}"
+    cd ${TOOLSPATH}
+    git clone https://github.com/devanshbatham/ParamSpider
+    cd ParamSpider
+    pip3 install -r requirements.txt
+    ln -s ${TOOLSPATH}/ParamSpider/paramspider.py /usr/local/bin/paramspider
+}
+
+ShufleDNS(){
+    echo -e "${RED}[+]${FUNCNAME[0]}${NC}"
+    GO111MODULE=on go get -v github.com/projectdiscovery/shuffledns/cmd/shuffledns
+}
+
+Sub404(){
+    echo -e "${RED}[+]${FUNCNAME[0]}${NC}"
+    cd ${TOOLSPATH} 
+    git clone https://github.com/r3curs1v3-pr0xy/sub404.git
+    cd sub404
+    pip3 install -r requirements.txt
+    chmod +x sub404.py
+    ln -s $TOOLSPATH/sub404/sub404.py /usr/local/bin/sub404
+}
+
+Subfinder(){
+    echo -e "${RED}[+]${FUNCNAME[0]}${NC}"
+    go install -v github.com/projectdiscovery/subfinder/v2/cmd/subfinder@latest
+}
+
+Subjs(){
+    echo -e "${RED}[+]${FUNCNAME[0]}${NC}"
+    GO111MODULE=on go get -u -v github.com/lc/subjs
+}
+
+Telegram-Send(){
+    echo -e "${RED}[+]${FUNCNAME[0]}${NC}"
+    pip3 install telegram-send
+}
+
+TurboSearch(){
+    echo -e "${RED}[+]${FUNCNAME[0]}${NC}"
+    cd ${TOOLSPATH}
+    git clone https://github.com/helviojunior/turbosearch.git
+    cd turbosearch
+    chmod +x turbosearch.py
+    ln -s ${TOOLSPATH}/turbosearch/turbosearch.py /usr/local/bin/turbosearch
+}
+
+Qsreplace(){
+    echo -e "${RED}[+]${FUNCNAME[0]}${NC}"
+    go get -u github.com/tomnomnom/qsreplace
+}
+
+Unfurl(){
+    echo -e "${RED}[+]${FUNCNAME[0]}${NC}"
+    go get -u github.com/tomnomnom/unfurl
+}
+
+Uro(){
+    echo -e "${RED}[+]${FUNCNAME[0]}${NC}"
+    pip3 install uro
+}
+
+Waybackurls(){
+    echo -e "${RED}[+]${FUNCNAME[0]}${NC}"
+    go get github.com/tomnomnom/waybackurls
+    GO111MODULE=on go get -u -v github.com/lc/gau
+    GO111MODULE=on go get -u -v github.com/bp0lr/gauplus
+}
+
+WPScan(){
+    echo -e "${RED}[+]${FUNCNAME[0]}${NC}"
+    gem install wpscan
+}
+
+#FIM DE INSTALAÇÃO DE FERRAMENTAS #################################
+
+#INICIO DE CONFIGURACOES FINAIS #################################
+
+PosInstalacao(){
+    if [ $USER == 'root' ]; then
+        mv /root/go/bin/* /usr/local/bin
+    else
+        mv /home/$SUDO_USER/go/bin/* /usr/local/bin
+    fi
+    echo -e "${GREEN}[+] DONE${NC}"
+
+}
+
+#FIM DE CONFIGURACOES FINAIS #################################
+
+
+
+
+callRequirements(){
+    setupEnvironment
+    setupOSRequirements
+    setupGolang
+}
+
+callInstallTools(){
+    Amass
+    Anew
+    Antiburl
+    Arjun
+    Assetfinder
+    Burl
+    ChaosClient
+    Collector
+    DalFox
+    Dirsearch
+    Dnsx
+    ffuf
+    Findomains
+    Gf
+    GithubSearch
+    GitDorker
+    GitDumper
+    GoogleChrome
+    GoSpider
+    Gowitness
+    Hakrawler
+    Hakrevdns
+    Haktrails
+    Httprobe
+    Httpx
+    JSScanner
+    Kiterunner
+    LinkFinder
+    Mapcidr
+    Massdns
+    Metabigor
+    Metasploit
+    Naabu
+    Notify
+    Nrich
+    Nuclei
+    ParamSpider
+    ShufleDNS
+    Sub404
+    Subdomains
+    Subfinder
+    Subjs
+    Telegram-Send
+    TurboSearch
+    Qsreplace
+    Unfurl
+    Uro
+    Waybackurls
+    WPScan
+}
+
+
+callPosInstalacao(){
+    PosInstalacao
+
+}
 
 #Root or Sudoer verifying.
 if [[ $(id -u) != 0 ]]; then
