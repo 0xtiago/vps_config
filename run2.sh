@@ -69,6 +69,7 @@ setupOSRequirements (){
 }
 
 setupGolang () {
+    GODIR=/usr/local
     echo -e "${RED}[+]${FUNCNAME[0]}${NC}"
     #Installing newer GO
     #https://miek.nl/2020/july/17/script-to-upgrade-to-latest-go-version/
@@ -82,9 +83,10 @@ setupGolang () {
     local GOLANG=https://dl.google.com/go/${LATEST}.linux-amd64.tar.gz
     local TAR=$(basename $GOLANG)
 
-    ( #cd ${GODIR}
+    ( cd ${GODIR}
       echo Downloading and extracting: $GOLANG >&2
       wget -q $GOLANG && rm -rf go && tar xvfz ${TAR}
+      mv go /usr/local
     )
     export PATH=$PATH:/usr/local/go/bin
 }
