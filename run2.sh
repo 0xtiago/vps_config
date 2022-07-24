@@ -86,8 +86,9 @@ setupGolang () {
     ( cd ${GODIR}
       echo Downloading and extracting: $GOLANG >&2
       wget -q $GOLANG && rm -rf go && tar xvfz ${TAR}
-      mv go /usr/local
     )
+
+    /usr/local/go/bin/go version
     export PATH=$PATH:/usr/local/go/bin
 }
 
