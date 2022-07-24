@@ -458,6 +458,8 @@ callInstallTools(){
     Dnsx
     ffuf
     Findomains
+    Gau
+    Gauplus
     Gf
     GithubSearch
     GitDorker
