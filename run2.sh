@@ -72,7 +72,7 @@ setupGolang () {
     echo -e "${RED}[+]${FUNCNAME[0]}${NC}"
     #Installing newer GO
     #https://miek.nl/2020/july/17/script-to-upgrade-to-latest-go-version/
-    local LATEST=$(curl -s 'https://golang.org/dl/?mode=json' | jq -r '.[0].version')
+    local LATEST=$(curl -s 'https://go.dev/dl/?mode=json' | jq -r '.[0].version')
     local INSTALLED=$(go version | awk '{ print $3 }')
     if [[ ${INSTALLED} == ${LATEST} ]]; then
         echo Go is up to date, running ${LATEST} >&2
@@ -82,7 +82,7 @@ setupGolang () {
     local GOLANG=https://dl.google.com/go/${LATEST}.linux-amd64.tar.gz
     local TAR=$(basename $GOLANG)
 
-    ( cd ${GODIR}
+    ( #cd ${GODIR}
       echo Downloading and extracting: $GOLANG >&2
       wget -q $GOLANG && rm -rf go && tar xvfz ${TAR}
     )
