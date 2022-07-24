@@ -88,8 +88,8 @@ setupGolang () {
       wget -q $GOLANG && rm -rf go && tar xvfz ${TAR}
     )
 
-    /usr/local/go/bin/go version
     export PATH=$PATH:/usr/local/go/bin
+    go version
 }
 
 
