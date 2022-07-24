@@ -46,6 +46,7 @@ setupOSRequirements (){
     john \
     jq \
     libpcap-dev \
+    libssl3 \
     locate \
     masscan \
     net-tools \
@@ -98,7 +99,7 @@ Amass(){
 
 Anew(){
     echo -e "${RED}[+]${FUNCNAME[0]}${NC}"
-    go get -u github.com/tomnomnom/anew
+    go install -v github.com/tomnomnom/anew@latest
 }
 
 Antiburl(){
@@ -118,12 +119,12 @@ Arjun(){
 
 Assetfinder(){
     echo -e "${RED}[+]${FUNCNAME[0]}${NC}"
-    go get -u github.com/tomnomnom/assetfinder
+    go install -v github.com/tomnomnom/assetfinder@latest
 }
 
 Burl(){
     echo -e "${RED}[+]${FUNCNAME[0]}${NC}"
-    go get github.com/tomnomnom/burl
+    go install -v github.com/tomnomnom/burl@latest
 }
 
 ChaosClient(){
@@ -157,12 +158,12 @@ Dirsearch(){
 
 Dnsx(){
     echo -e "${RED}[+]${FUNCNAME[0]}${NC}"
-    GO111MODULE=on go get -v github.com/projectdiscovery/dnsx/cmd/dnsx
+    go install -v github.com/projectdiscovery/dnsx/cmd/dnsx@latest
 }
 
 ffuf(){
     echo -e "${RED}[+]${FUNCNAME[0]}${NC}"
-    go get -u github.com/ffuf/ffuf
+    go install -v github.com/ffuf/ffuf@latest
 }
 
 Findomains(){
@@ -172,6 +173,14 @@ Findomains(){
     mv findomain-linux findomain
     mv findomain /usr/local/bin
     chmod +x /usr/local/bin/findomain
+}
+
+Gau(){
+    go install -v github.com/lc/gau@latest
+}
+
+Gauplus(){
+    go install -v  github.com/bp0lr/gauplus@latest
 }
 
 Gf(){
@@ -221,7 +230,7 @@ GoogleChrome(){
 
 GoSpider(){
     echo -e "${RED}[+]${FUNCNAME[0]}${NC}"
-    GO111MODULE=on go get -u github.com/jaeles-project/gospider
+    go install -v github.com/jaeles-project/gospider@latest
 }
 
 Gowitness(){
@@ -234,28 +243,28 @@ Gowitness(){
 
 Hakrawler(){
     echo -e "${RED}[+]${FUNCNAME[0]}${NC}"
-    go get github.com/hakluke/hakrawler
+    go install -v github.com/hakluke/hakrawler@latest
 }
 
 Hakrevdns(){
     echo -e "${RED}[+]${FUNCNAME[0]}${NC}"
-    go get github.com/hakluke/hakrevdns
+    go install -v github.com/hakluke/hakrevdns@latest
 }
 
 Haktrails(){
     echo -e "${RED}[+]${FUNCNAME[0]}${NC}"
-    go get github.com/hakluke/haktrails
+    go install -v  github.com/hakluke/haktrails@latest
 }
 
 Httprobe(){
     echo -e "${RED}[+]${FUNCNAME[0]}${NC}"
-    go get -u github.com/tomnomnom/httprobe
+    go install -v github.com/tomnomnom/httprobe@latest
 }
 
 
 Httpx(){
     echo -e "${RED}[+]${FUNCNAME[0]}${NC}"
-    GO111MODULE=on go get -v github.com/projectdiscovery/httpx/cmd/httpx
+    go install -v github.com/projectdiscovery/httpx/cmd/httpx@latest
 }
 
 JSScanner(){
@@ -289,7 +298,7 @@ LinkFinder(){
 
 Mapcidr(){
     echo -e "${RED}[+]${FUNCNAME[0]}${NC}"
-    GO111MODULE=on go get -v github.com/projectdiscovery/mapcidr/cmd/mapcidr
+    go install -v  github.com/projectdiscovery/mapcidr/cmd/mapcidr@latest
 }
 
 Massdns(){
@@ -303,7 +312,7 @@ Massdns(){
 
 Metabigor(){
     echo -e "${RED}[+]${FUNCNAME[0]}${NC}"
-    GO111MODULE=on go get github.com/j3ssie/metabigor
+    go install -v  github.com/j3ssie/metabigor@latest
 }
 
 Metasploit(){
@@ -321,7 +330,7 @@ Naabu(){
 
 Notify(){
     echo -e "${RED}[+]${FUNCNAME[0]}${NC}"
-    GO111MODULE=on go get -v github.com/projectdiscovery/notify/cmd/notify
+   go install -v  github.com/projectdiscovery/notify/cmd/notify@latest
 }
 
 Nrich(){
@@ -348,7 +357,7 @@ ParamSpider(){
 
 ShufleDNS(){
     echo -e "${RED}[+]${FUNCNAME[0]}${NC}"
-    GO111MODULE=on go get -v github.com/projectdiscovery/shuffledns/cmd/shuffledns
+    go install -v  github.com/projectdiscovery/shuffledns/cmd/shuffledns@latest
 }
 
 Sub404(){
@@ -368,7 +377,7 @@ Subfinder(){
 
 Subjs(){
     echo -e "${RED}[+]${FUNCNAME[0]}${NC}"
-    GO111MODULE=on go get -u -v github.com/lc/subjs
+    go install -v  github.com/lc/subjs@latest
 }
 
 Telegram-Send(){
@@ -387,12 +396,12 @@ TurboSearch(){
 
 Qsreplace(){
     echo -e "${RED}[+]${FUNCNAME[0]}${NC}"
-    go get -u github.com/tomnomnom/qsreplace
+    go install -v  github.com/tomnomnom/qsreplace@latest
 }
 
 Unfurl(){
     echo -e "${RED}[+]${FUNCNAME[0]}${NC}"
-    go get -u github.com/tomnomnom/unfurl
+    go install -v github.com/tomnomnom/unfurl@latest
 }
 
 Uro(){
@@ -402,9 +411,7 @@ Uro(){
 
 Waybackurls(){
     echo -e "${RED}[+]${FUNCNAME[0]}${NC}"
-    go get github.com/tomnomnom/waybackurls
-    GO111MODULE=on go get -u -v github.com/lc/gau
-    GO111MODULE=on go get -u -v github.com/bp0lr/gauplus
+    go install -v github.com/tomnomnom/waybackurls@latest
 }
 
 WPScan(){
