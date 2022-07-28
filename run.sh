@@ -310,6 +310,11 @@ Massdns(){
     ln -s $TOOLSPATH/massdns/bin/massdns /usr/local/bin/massdns
 }
 
+MegaPy(){
+    echo -e "${RED}[+]${FUNCNAME[0]}${NC}"
+    pip install mega.py
+}
+
 Metabigor(){
     echo -e "${RED}[+]${FUNCNAME[0]}${NC}"
     go install -v  github.com/j3ssie/metabigor@latest
@@ -477,6 +482,7 @@ callInstallTools(){
     LinkFinder
     Mapcidr
     Massdns
+    MegaPy
     Metabigor
     Metasploit
     Naabu
