@@ -154,9 +154,9 @@ ln -s $TOOLSPATH/anti-burl /usr/local/bin/anti-burl
 #Install gowitness
 echo -e "${RED}[+] Installing gowitness and Google Chrome${NC}"
 #go get -v github.com/sensepost/gowitnes
-cd $TOOLSPATH ; wget https://github.com/sensepost/gowitness/releases/download/2.3.6/gowitness-2.3.6-linux-amd64
-chmod +x gowitness-2.3.6-linux-amd64
-ln -s $TOOLSPATH/gowitness-2.3.6-linux-amd64 /usr/local/bin/gowitness
+cd $TOOLSPATH ; wget https://github.com/sensepost/gowitness/releases/download/2.4.0/gowitness-2.4.0-linux-amd64
+chmod +x gowitness-2.4.0-linux-amd644
+ln -s $TOOLSPATH/gowitness-2.4.0-linux-amd64 /usr/local/bin/gowitness
 # Install google chrome
 cd /tmp
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
