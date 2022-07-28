@@ -235,7 +235,7 @@ GoSpider(){
 
 Gowitness(){
     echo -e "${RED}[+]${FUNCNAME[0]}${NC}"
-    local GOWITNESS=https://github.com/sensepost/gowitness/releases/download/2.4.0/gowitness-2.4.0-darwin-amd64
+    local GOWITNESS=https://github.com/sensepost/gowitness/releases/download/2.4.0/gowitness-2.4.0-linux-amd64
     cd $TOOLSPATH ; wget $GOWITNESS
     chmod +x $(basename $GOWITNESS)
     ln -s $TOOLSPATH/$(basename $GOWITNESS) /usr/local/bin/gowitness
