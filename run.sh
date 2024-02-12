@@ -360,6 +360,13 @@ ParamSpider(){
     ln -s ${TOOLSPATH}/ParamSpider/paramspider.py /usr/local/bin/paramspider
 }
 
+PureDNS(){
+    echo -e "${RED}[+]${FUNCNAME[0]}${NC}"
+    go install -v github.com/d3mondev/puredns/v2@latest
+}
+
+
+
 ShufleDNS(){
     echo -e "${RED}[+]${FUNCNAME[0]}${NC}"
     go install -v  github.com/projectdiscovery/shuffledns/cmd/shuffledns@latest
