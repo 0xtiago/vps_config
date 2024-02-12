@@ -162,6 +162,11 @@ Dirsearch(){
     ln -s ${TOOLSPATH}/dirsearch/dirsearch.py /usr/local/bin/dirsearch
 }
 
+Dnsgen(){
+    echo -e "${RED}[+]${FUNCNAME[0]}${NC}"
+    pip3 install dnsgen
+}
+
 Dnsx(){
     echo -e "${RED}[+]${FUNCNAME[0]}${NC}"
     go install -v github.com/projectdiscovery/dnsx/cmd/dnsx@latest
