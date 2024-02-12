@@ -92,6 +92,12 @@ setupGolang () {
 
 #INICIO DE INSTALAÇÃO DE FERRAMENTAS #################################
 
+Altdns(){
+    echo -e "${RED}[+]${FUNCNAME[0]}${NC}"
+    pip3 install py-altdns==1.0.2
+}
+
+
 Amass(){
     echo -e "${RED}[+]${FUNCNAME[0]}${NC}"
     snap install amass
