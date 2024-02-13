@@ -383,6 +383,13 @@ ShufleDNS(){
     go install -v  github.com/projectdiscovery/shuffledns/cmd/shuffledns@latest
 }
 
+sslscan(){
+    echo -e "${RED}[+]${FUNCNAME[0]}${NC}"
+     apt install sslscan
+}
+
+
+
 Sub404(){
     echo -e "${RED}[+]${FUNCNAME[0]}${NC}"
     cd ${TOOLSPATH} 
