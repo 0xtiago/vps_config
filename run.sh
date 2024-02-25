@@ -290,6 +290,7 @@ JSScanner(){
 JsubFinder(){
     echo -e "${RED}[+]${FUNCNAME[0]}${NC}"
     go install github.com/ThreatUnkown/jsubfinder@latest
+    wget https://raw.githubusercontent.com/ThreatUnkown/jsubfinder/master/.jsf_signatures.yaml && mv .jsf_signatures.yaml ~/.jsf_signatures.yaml
 }
 
 Kiterunner(){
