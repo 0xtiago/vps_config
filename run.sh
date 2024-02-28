@@ -96,6 +96,10 @@ Altdns(){
     pip3 install py-altdns==1.0.2
 }
 
+Alterx(){
+    echo -e "${RED}[+]${FUNCNAME[0]}${NC}"
+    go install -v github.com/projectdiscovery/alterx/cmd/alterx@latest
+}
 
 Amass(){
     echo -e "${RED}[+]${FUNCNAME[0]}${NC}"
