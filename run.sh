@@ -46,7 +46,6 @@ setupOSRequirements (){
     john \
     jq \
     libpcap-dev \
-    libssl3 \
     locate \
     masscan \
     net-tools \
@@ -180,8 +179,8 @@ ffuf(){
 Findomains(){
     echo -e "${RED}[+]${FUNCNAME[0]}${NC}"
     cd /tmp
-    wget https://github.com/findomain/findomain/releases/latest/download/findomain-linux
-    mv findomain-linux findomain
+    wget https://github.com/findomain/findomain/releases/latest/download/findomain-linux.zip
+    unzip findomain-linux.zip
     mv findomain /usr/local/bin
     chmod +x /usr/local/bin/findomain
 }
@@ -286,6 +285,12 @@ JSScanner(){
     pip3 install -r requirements.txt
     chmod +x JSScanner.py
     ln -s ${TOOLSPATH}/JSScanner/JSScanner.py /usr/local/bin/jsscanner
+}
+
+JsubFinder(){
+    echo -e "${RED}[+]${FUNCNAME[0]}${NC}"
+    go install github.com/ThreatUnkown/jsubfinder@latest
+    wget https://raw.githubusercontent.com/ThreatUnkown/jsubfinder/master/.jsf_signatures.yaml && mv .jsf_signatures.yaml ~/.jsf_signatures.yaml
 }
 
 Kiterunner(){
