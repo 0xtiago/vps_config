@@ -175,6 +175,14 @@ Dnsx(){
     go install -v github.com/projectdiscovery/dnsx/cmd/dnsx@latest
 }
 
+DNSValidaor(){
+    echo -e "${RED}[+]${FUNCNAME[0]}${NC}"
+    cd ${TOOLSPATH}
+    git clone https://github.com/vortexau/dnsvalidator.git
+    cd dnsvalidator
+    python3 setup.py install
+}
+
 ffuf(){
     echo -e "${RED}[+]${FUNCNAME[0]}${NC}"
     go install -v github.com/ffuf/ffuf@latest
@@ -376,7 +384,7 @@ ParamSpider(){
     cd ${TOOLSPATH}
     git clone https://github.com/devanshbatham/ParamSpider
     cd ParamSpider
-    pip3 install -r requirements.txt
+    pip install .
     ln -s ${TOOLSPATH}/ParamSpider/paramspider.py /usr/local/bin/paramspider
 }
 
