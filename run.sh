@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Cria Log de tudo
+LOGFILE="~/vps_config.log"
+exec > >(tee -a $LOGFILE) 2>&1
+
 #INICIO DE INSTALACAO DE PRE-REQUISITOS #################################
 
 setupEnvironment() {
