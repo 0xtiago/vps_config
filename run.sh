@@ -503,6 +503,14 @@ PosInstalacao(){
     else
         echo -e "${RED}[+]Moving go binary not executed. Nothing to do.${NC}"
     fi
+
+    ## Resolvendo problema da chave depreciada
+    cd /tmp
+    wget http://apt.metasploit.com/metasploit-framework.gpg.key
+    gpg --no-default-keyring --keyring ./metasploit-framework_keyring.gpg --import metasploit-framework.gpg.key
+    gpg --no-default-keyring --keyring ./metasploit-framework_keyring.gpg --export > ./metasploit-framework.gpg
+    mv ./metasploit-framework.gpg /etc/apt/trusted.gpg.d/
+
     echo -e "${GREEN}[+] DONE${NC}"
 
 }
