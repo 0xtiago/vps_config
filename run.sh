@@ -481,6 +481,14 @@ Waybackurls(){
     go install -v github.com/tomnomnom/waybackurls@latest
 }
 
+wafw00f(){
+    echo -e "${RED}[+]${FUNCNAME[0]}${NC}"
+    cd ${TOOLSPATH}
+    git clone https://github.com/EnableSecurity/wafw00f
+    cd wafw00f
+    python3 setup.py install
+}
+
 WPScan(){
     echo -e "${RED}[+]${FUNCNAME[0]}${NC}"
     gem install wpscan
@@ -576,6 +584,7 @@ callInstallTools(){
     Unfurl
     Uro
     Waybackurls
+    wafw00f
     WPScan
 }
 
