@@ -58,6 +58,7 @@ setupOSRequirements (){
     grepcidr \
     gzip \
     htop \
+    inetutils-ping \
     john \
     jq \
     libpcap-dev \
