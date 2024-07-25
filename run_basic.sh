@@ -52,6 +52,7 @@ setupOSRequirements (){
     brutespray \
     curl \
     default-jre \
+    dos2unix \
     fonts-powerline \
     git \
     grepcidr \

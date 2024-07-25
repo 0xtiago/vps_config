@@ -51,6 +51,7 @@ setupOSRequirements (){
     apt-get install \
     brutespray \
     curl \
+    dos2unix \
     default-jre \
     fonts-powerline \
     git \
