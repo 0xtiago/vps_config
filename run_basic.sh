@@ -50,6 +50,7 @@ setupOSRequirements (){
     apt dist-upgrade -y 
     apt-get install \
     brutespray \
+    ca-certificates \ 
     curl \
     default-jre \
     dos2unix \
