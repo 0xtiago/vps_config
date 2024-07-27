@@ -24,7 +24,7 @@ RUN wget -O - "https://raw.githubusercontent.com/0xtiago/vps_config/main/run_bas
 
 
 # Copiando o certificado do BurpSuite para o container, se ele existir
-COPY burp_cert.crt /usr/local/share/ca-certificates/burp_cert.crt
+#COPY burp_cert.crt /usr/local/share/ca-certificates/burp_cert.crt
 
 # Executar o script de verificação e configuração do certificado do Burp
 RUN wget -O - https://raw.githubusercontent.com/0xtiago/vps_config/main/docker_check_and_copy_cert.sh | sh
