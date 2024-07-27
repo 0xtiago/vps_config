@@ -1,6 +1,8 @@
 .DS_Store
+.bash_history 
+.zsh_history
 cacert.der
 cacert.cer
 burp_cert.der
 burp_cert.cer
-.zsh_history
+
