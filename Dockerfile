@@ -28,7 +28,7 @@ RUN wget -O - "https://raw.githubusercontent.com/0xtiago/vps_config/main/run_bas
 
 
 # Baixando o script de verificação e configuração do certificado
-RUN rm -rf /usr/local/bin/docker_check_and_copy_cert.sh \
+RUN rm -rf /usr/local/bin/docker_check_and_copy_cert.sh; \
     wget https://raw.githubusercontent.com/0xtiago/vps_config/main/docker_check_and_copy_cert.sh \
     -O /usr/local/bin/docker_check_and_copy_cert.sh && \
     chmod +x /usr/local/bin/docker_check_and_copy_cert.sh
