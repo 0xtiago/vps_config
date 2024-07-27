@@ -27,7 +27,7 @@ RUN wget -O - "https://raw.githubusercontent.com/0xtiago/vps_config/main/run_bas
 COPY burp_cert.crt /usr/local/share/ca-certificates/burp_cert.crt
 
 # Executar o script de verificação e configuração do certificado do Burp
-RUN wget -O - https://raw.githubusercontent.com/0xtiago/vps_config/main/check_and_copy_cert.sh | sh
+RUN wget -O - https://raw.githubusercontent.com/0xtiago/vps_config/main/docker_check_and_copy_cert.sh | sh
 
 # Instalando o ohmyzsh e configurando o zsh como bash padrão
 # https://ohmyz.sh/#install
