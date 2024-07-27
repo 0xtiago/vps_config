@@ -24,10 +24,19 @@ RUN wget -O - "https://raw.githubusercontent.com/0xtiago/vps_config/main/run_bas
 
 
 # Copiando o certificado do BurpSuite para o container, se ele existir
-#COPY burp_cert.crt /usr/local/share/ca-certificates/burp_cert.crt
+COPY burp_cert.crt /usr/local/share/ca-certificates/burp_cert.crt
 
-# Executar o script de verificação e configuração do certificado do Burp
-RUN wget -O - https://raw.githubusercontent.com/0xtiago/vps_config/main/docker_check_and_copy_cert.sh | sh
+# Copiar o certificado do BurpSuite para o container, se ele existir no contexto de construção
+COPY burp_cert.crt /usr/local/share/ca-certificates/burp_cert.crt
+
+# Baixando o script de verificação e configuração do certificado
+RUN wget https://raw.githubusercontent.com/0xtiago/vps_config/main/docker_check_and_copy_cert.sh \
+    -O /usr/local/bin/docker_check_and_copy_cert.sh && \
+    chmod +x /usr/local/bin/docker_check_and_copy_cert.sh
+
+# Executando o script de verificação e configuração do certificado
+RUN /usr/local/bin/check_and_copy_cert.sh
+
 
 # Instalando o ohmyzsh e configurando o zsh como bash padrão
 # https://ohmyz.sh/#install
