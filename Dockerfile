@@ -12,7 +12,6 @@ RUN echo 'export HISTFILE=/root/.zsh_history' >> /root/.zshrc && \
     echo 'export HISTFILESIZE=2000' >> /root/.zshrc && \
     echo 'export PROMPT_COMMAND="history -a; $PROMPT_COMMAND"' >> /root/.zshrc
 
-# Criar o arquivo .bash_history
 RUN touch /root/.zsh_history
 
 # Executa script básico de instalação de configuração do container
@@ -22,15 +21,8 @@ RUN wget -O - "https://raw.githubusercontent.com/0xtiago/vps_config/main/run_bas
 # Copiando o certificado do BurpSuite para o container, se ele existir
 COPY burp_cert.crt /usr/local/share/ca-certificates/burp_cert.crt
 
-# Baixar o certificado do BurpSuite durante a construção
-#RUN wget -O /usr/local/share/ca-certificates/burp_cert.crt https://raw.githubusercontent.com/0xtiago/vps_config/burp_cert.crt
-
-# Configura o certificado apenas se o certificado estiver presente
-RUN if [ -f /usr/local/share/ca-certificates/burp_cert.crt ]; then \
-    update-ca-certificates; \
-    else \
-    echo "Certificado BurpSuite não encontrado. Pulando a importação do certificado."; \
-    fi
+# Executar o script de verificação e configuração do certificado d
+RUN wget -O - https://raw.githubusercontent.com/0xtiago/vps_config/main/check_and_copy_cert.sh | sh
 
 # Instalando o ohmyzsh e configurando o zsh como bash padrão
 RUN sh -c "$(wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)" && \
@@ -41,5 +33,5 @@ RUN git clone https://github.com/gpakosz/.tmux.git /root/.tmux && \
     ln -s -f /root/.tmux/.tmux.conf /root/.tmux.conf && \
     cp /root/.tmux/.tmux.conf.local /root/
 
-# Para manter o container em execução
+# Para manter o container em execução após saídas
 CMD ["tail", "-f", "/dev/null"]

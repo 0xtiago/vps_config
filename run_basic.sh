@@ -56,6 +56,7 @@ setupOSRequirements (){
     dos2unix \
     fonts-powerline \
     git \
+    gnupg2 \
     grepcidr \
     gzip \
     htop \
@@ -181,8 +182,10 @@ JsubFinder(){
 Metasploit(){
     echo -e "${RED}[+]${FUNCNAME[0]}${NC}"
     cd /tmp 
-    curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/templates/metasploit-framework-wrappers/msfupdate.erb > msfinstall
-    chmod 755 msfinstall && ./msfinstall
+    curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/templates/metasploit-framework-wrappers/metasploit-framework.gpg.key | sudo apt-key add -
+    sudo sh -c 'echo "deb http://downloads.metasploit.com/data/releases/metasploit-framework/apt lucid main" > /etc/apt/sources.list.d/metasploit-framework.list'
+    sudo apt update
+    sudo apt install -y metasploit-framework
     msfupdate
 }
 
