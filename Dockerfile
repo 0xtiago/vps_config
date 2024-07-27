@@ -10,9 +10,9 @@ WORKDIR /workdir
 RUN echo 'export HISTFILE=/root/.zsh_history' >> /root/.zshrc && \
     echo 'export HISTSIZE=1000' >> /root/.zshrc && \
     echo 'export HISTFILESIZE=2000' >> /root/.zshrc && \
-    echo 'setopt HIST_IGNORE_SPACE' >> /root/.zshrc && \
-    echo 'setopt APPEND_HISTORY' >> /root/.zshrc && \
-    echo 'setopt EXTENDED_HISTORY' >> /root/.zshrc
+    echo 'setopt inc_append_history' >> /root/.zshrc && \
+    echo 'setopt share_history' >> /root/.zshrc && \
+    echo 'setopt append_history' >> /root/.zshrc
 
 # Cria .zsh_history
 # Vc precisa criar o .zsh_history localmente para o mapeamento!
