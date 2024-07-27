@@ -22,6 +22,9 @@ RUN wget -O - "https://raw.githubusercontent.com/0xtiago/vps_config/main/run_bas
 # Copiando o certificado do BurpSuite para o container, se ele existir
 COPY burp_cert.crt /usr/local/share/ca-certificates/burp_cert.crt
 
+# Baixar o certificado do BurpSuite durante a construção
+#RUN wget -O /usr/local/share/ca-certificates/burp_cert.crt https://raw.githubusercontent.com/0xtiago/vps_config/burp_cert.crt
+
 # Configura o certificado apenas se o certificado estiver presente
 RUN if [ -f /usr/local/share/ca-certificates/burp_cert.crt ]; then \
     update-ca-certificates; \
