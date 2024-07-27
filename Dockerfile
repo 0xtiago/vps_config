@@ -12,6 +12,9 @@ RUN echo 'export HISTFILE=/root/.zsh_history' >> /root/.zshrc && \
     echo 'export HISTFILESIZE=2000' >> /root/.zshrc && \
     echo 'export PROMPT_COMMAND="history -a; $PROMPT_COMMAND"' >> /root/.zshrc
 
+# Cria .zsh_history
+# Vc precisa criar o .zsh_history localmente para o mapeamento!
+# $ touch .zsh_history
 RUN touch /root/.zsh_history
 
 # Executa script básico de instalação de configuração do container
