@@ -46,9 +46,9 @@ setupEnvironment() {
 setupOSRequirements (){
     echo -e "${RED}[+]${FUNCNAME[0]}${NC}"
     #Installing packages
-    apt-get update 
+    apt update 
     apt dist-upgrade -y 
-    apt-get install \
+    apt install -y \
     brutespray \
     ca-certificates \ 
     curl \
@@ -57,6 +57,7 @@ setupOSRequirements (){
     fonts-powerline \
     git \
     gnupg2 \
+    golang \
     gpg \
     grepcidr \
     gzip \
@@ -80,54 +81,53 @@ setupOSRequirements (){
     vim \
     vim-nox \
     zip \
-    zsh \
-    -y
+    zsh
 }
 
-setupGolang () {
-    GODIR=/usr/local
-    echo -e "${RED}[+]${FUNCNAME[0]}${NC}"
-    #Installing newer GO
-    #https://miek.nl/2020/july/17/script-to-upgrade-to-latest-go-version/
-    local LATEST=$(curl -s 'https://go.dev/dl/?mode=json' | jq -r '.[0].version')
-    local INSTALLED=$(go version | awk '{ print $3 }')
-    if ! command -v go ; then
-        echo -e "${RED}Installing Go version ${LATEST}"
-        local GOLANG=https://dl.google.com/go/${LATEST}.linux-amd64.tar.gz
-        local TAR=$(basename $GOLANG)
-        (   cd ${GODIR}
-            echo Downloading and extracting: $GOLANG
-            wget -q $GOLANG && tar xvfz ${TAR}
-        )
-    else
-        if [[ ${INSTALLED} == ${LATEST} ]]; then
-            echo Go is up to date, running ${LATEST} >&2
-            exit 0
-        fi
-        echo Upgrading Go from ${INSTALLED} to ${LATEST} >&2
-        local GOLANG=https://dl.google.com/go/${LATEST}.linux-amd64.tar.gz
-        local TAR=$(basename $GOLANG)
+# setupGolang () {
+#     GODIR=/usr/local
+#     echo -e "${RED}[+]${FUNCNAME[0]}${NC}"
+#     #Installing newer GO
+#     #https://miek.nl/2020/july/17/script-to-upgrade-to-latest-go-version/
+#     local LATEST=$(curl -s 'https://go.dev/dl/?mode=json' | jq -r '.[0].version')
+#     local INSTALLED=$(go version | awk '{ print $3 }')
+#     if ! command -v go ; then
+#         echo -e "${RED}Installing Go version ${LATEST}"
+#         local GOLANG=https://dl.google.com/go/${LATEST}.linux-amd64.tar.gz
+#         local TAR=$(basename $GOLANG)
+#         (   cd ${GODIR}
+#             echo Downloading and extracting: $GOLANG
+#             wget -q $GOLANG && tar xvfz ${TAR}
+#         )
+#     else
+#         if [[ ${INSTALLED} == ${LATEST} ]]; then
+#             echo Go is up to date, running ${LATEST} >&2
+#             exit 0
+#         fi
+#         echo Upgrading Go from ${INSTALLED} to ${LATEST} >&2
+#         local GOLANG=https://dl.google.com/go/${LATEST}.linux-amd64.tar.gz
+#         local TAR=$(basename $GOLANG)
 
-        ( cd ${GODIR}
-          echo Downloading and extracting: $GOLANG >&2
-          wget -q $GOLANG && rm -rf go && tar xvfz ${TAR}
-        )
-    fi
+#         ( cd ${GODIR}
+#           echo Downloading and extracting: $GOLANG >&2
+#           wget -q $GOLANG && rm -rf go && tar xvfz ${TAR}
+#         )
+#     fi
 
-    export PATH=$PATH:/usr/local/go/bin
-    export GOPATH=/root/go
-    export GOCACHE=/root/go/cache
-    go version
+#     export PATH=$PATH:/usr/local/go/bin
+#     export GOPATH=/root/go
+#     export GOCACHE=/root/go/cache
+#     go version
 
-    # Adiciona ao .bashrc e o .zshrc ao export
-    echo 'export PATH=$PATH:/usr/local/go/bin' >> /root/.bashrc
-    echo 'export GOPATH=/root/go' >> /root/.bashrc
-    echo 'export GOCACHE=/root/go/cache' >> /root/.bashrc
+#     # Adiciona ao .bashrc e o .zshrc ao export
+#     echo 'export PATH=$PATH:/usr/local/go/bin' >> /root/.bashrc
+#     echo 'export GOPATH=/root/go' >> /root/.bashrc
+#     echo 'export GOCACHE=/root/go/cache' >> /root/.bashrc
 
-    echo 'export PATH=$PATH:/usr/local/go/bin' >> /root/.zshrc
-    echo 'export GOPATH=/root/go' >> /root/.zshrc
-    echo 'export GOCACHE=/root/go/cache' >> /root/.zshrc
-}
+#     echo 'export PATH=$PATH:/usr/local/go/bin' >> /root/.zshrc
+#     echo 'export GOPATH=/root/go' >> /root/.zshrc
+#     echo 'export GOCACHE=/root/go/cache' >> /root/.zshrc
+#}
 #FIM DE INSTALACAO DE PRE-REQUISITOS #################################
 
 #INICIO DE INSTALAÇÃO DE FERRAMENTAS #################################
@@ -278,7 +278,7 @@ PosInstalacao(){
 callRequirements(){
     setupEnvironment
     setupOSRequirements
-    setupGolang
+    #setupGolang
 }
 
 callInstallTools(){
@@ -313,6 +313,6 @@ if [[ $(id -u) != 0 ]]; then
     exit 0
 else
     callRequirements
-    callInstallTools
-    callPosInstalacao
+    #callInstallTools
+    #callPosInstalacao
 fi

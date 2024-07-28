@@ -1,8 +1,16 @@
 FROM ubuntu:latest
 
-RUN apt-get update && \
-    apt-get upgrade -y && \
-    apt-get install -y wget curl ca-certificates zsh tmux git
+ENV HOSTNAME=Baleiao
+
+RUN apt update && apt install -y \
+    zsh \
+    git \
+    curl \
+    wget \
+    golang \
+    python3 \
+    python3-pip
+
 
 WORKDIR /workdir
 
