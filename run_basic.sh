@@ -77,6 +77,7 @@ setupOSRequirements (){
     sqlmap \
     tmux \
     vim \
+    vim-nox \
     zip \
     zsh \
     -y
