@@ -22,21 +22,6 @@ RUN touch /root/.zsh_history
 # Executa script básico de instalação de configuração do container
 RUN wget -O - "https://raw.githubusercontent.com/0xtiago/vps_config/main/run_basic.sh" | bash
 
-
-# Copiando o certificado do BurpSuite para o container, se ele existir
-#COPY burp_cert.crt /usr/local/share/ca-certificates/burp_cert.crt
-
-
-# # Baixando o script de verificação e configuração do certificado
-# RUN rm -rf /usr/local/bin/docker_check_and_copy_cert.sh; \
-#     wget https://raw.githubusercontent.com/0xtiago/vps_config/main/docker_check_and_copy_cert.sh \
-#     -O /usr/local/bin/docker_check_and_copy_cert.sh && \
-#     chmod +x /usr/local/bin/docker_check_and_copy_cert.sh
-
-# # Executando o script de verificação e configuração do certificado
-# RUN /usr/local/bin/docker_check_and_copy_cert.sh
-
-
 # Instalando o ohmyzsh e configurando o zsh como bash padrão
 # https://ohmyz.sh/#install
 RUN sh -c "$(wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)" && \
@@ -47,7 +32,12 @@ RUN git clone https://github.com/gpakosz/.tmux.git /root/.tmux && \
     ln -s -f /root/.tmux/.tmux.conf /root/.tmux.conf && \
     cp /root/.tmux/.tmux.conf.local /root/
 
-RUN sed -i 's/ZSH_THEME="nome_do_tema"/ZSH_THEME="novo_nome_do_tema"/g' ~/.zshrc 
+# Spaceship
+RUN git clone https://github.com/spaceship-prompt/spaceship-prompt.git "$ZSH_CUSTOM/themes/spaceship-prompt" --depth=1 ;\
+    ln -s "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/themes/spaceship.zsh-theme"
+
+# Mudando tema do ohmyzsh para o spaceship
+RUN sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="spaceship"/g' ~/.zshrc 
 
 # Para manter o container em execução após saídas
 CMD ["tail", "-f", "/dev/null"]

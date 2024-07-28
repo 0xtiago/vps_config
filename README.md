@@ -1,7 +1,7 @@
 # vps_config
 Simple script to prepare my VPSs. Feel free to contribute.
 
-![](markmap.png)
+![](assets/markmap.png)
 
 
 ## Container usage
