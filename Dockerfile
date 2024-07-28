@@ -33,7 +33,7 @@ RUN git clone https://github.com/gpakosz/.tmux.git /root/.tmux && \
     cp /root/.tmux/.tmux.conf.local /root/
 
 # Spaceship
-RUN git clone https://github.com/spaceship-prompt/spaceship-prompt.git "$ZSH_CUSTOM/themes/spaceship-prompt" --depth=1 ;\
+RUN git clone https://github.com/spaceship-prompt/spaceship-prompt.git "$ZSH_CUSTOM/themes/spaceship-prompt" --depth=1 && \
     ln -s "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/themes/spaceship.zsh-theme"
 
 # Mudando tema do ohmyzsh para o spaceship
