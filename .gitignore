@@ -3,6 +3,7 @@
 .zsh_history
 cacert.der
 cacert.cer
+burp_cert.crt
 burp_cert.der
 burp_cert.cer
 
