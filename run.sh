@@ -57,6 +57,7 @@ setupOSRequirements (){
     fonts-powerline \
     git \
     gnupg2 \
+    gpg \
     grepcidr \
     gzip \
     htop \
@@ -118,10 +119,14 @@ setupGolang () {
     export GOCACHE=/root/go/cache
     go version
 
-    # Adiciona ao .bashrc o export
+    # Adiciona ao .bashrc e o .zshrc ao export
     echo 'export PATH=$PATH:/usr/local/go/bin' >> /root/.bashrc
     echo 'export GOPATH=/root/go' >> /root/.bashrc
     echo 'export GOCACHE=/root/go/cache' >> /root/.bashrc
+
+    echo 'export PATH=$PATH:/usr/local/go/bin' >> /root/.zshrc
+    echo 'export GOPATH=/root/go' >> /root/.zshrc
+    echo 'export GOCACHE=/root/go/cache' >> /root/.zshrc
 }
 #FIM DE INSTALACAO DE PRE-REQUISITOS #################################
 
