@@ -8,6 +8,9 @@ RUN apt update && apt install -y \
     vim \
     tmux
 
+# Hostname
+RUN echo "BaleiaoHacker" > /etc/hostname
+
 # Instalando o ohmyzsh e configurando o zsh como bash padrão
 # https://ohmyz.sh/#install
 RUN sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" && \
@@ -36,7 +39,7 @@ COPY auxiliar_scripts/docker_script.sh /usr/local/bin/docker_script.sh
 
 
 #Limpeza de cache para diminuir a imagem
-RUN rm -rf /var/lib/apt/lists/*
+#RUN rm -rf /var/lib/apt/lists/*
 
 WORKDIR /workdir
 
