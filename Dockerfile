@@ -30,8 +30,8 @@ RUN git clone https://github.com/gpakosz/.tmux.git ~/.tmux && \
     ln -s -f ~/.tmux/.tmux.conf ~/.tmux.conf && \
     cp ~/.tmux/.tmux.conf.local ~/
 
-# Copia o script para o container
-COPY auxiliar_scripts/docker_script.sh /usr/local/bin/docker_script.sh
+# Copia o script para o scontainer
+#COPY auxiliar_scripts/docker_script.sh /usr/local/bin/docker_script.sh
 
 # Define permissões de execução e executa o script
 # RUN chmod +x /usr/local/bin/docker_script.sh && \
