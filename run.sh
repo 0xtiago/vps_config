@@ -547,6 +547,7 @@ callInstallTools(){
     Qsreplace
     Unfurl
     Uro
+    Katana
     Waybackurls
     WPScan
 }
