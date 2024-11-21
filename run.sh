@@ -339,6 +339,11 @@ JsubFinder(){
     wget https://raw.githubusercontent.com/ThreatUnkown/jsubfinder/master/.jsf_signatures.yaml && mv .jsf_signatures.yaml ~/.jsf_signatures.yaml
 }
 
+Katana(){
+    echo -e "${RED}[+]${FUNCNAME[0]}${NC}"
+    go install github.com/projectdiscovery/katana/cmd/katana@latest
+}
+
 Kiterunner(){
     echo -e "${RED}[+]${FUNCNAME[0]}${NC}"
     cd ${TOOLSPATH}
@@ -488,10 +493,6 @@ Uro(){
     $PIPCOMMAND uro
 }
 
-Katana(){
-    echo -e "${RED}[+]${FUNCNAME[0]}${NC}"
-    go install github.com/projectdiscovery/katana/cmd/katana@latest
-}
 
 Waybackurls(){
     echo -e "${RED}[+]${FUNCNAME[0]}${NC}"
@@ -579,6 +580,7 @@ callInstallTools(){
     Httprobe
     Httpx
     JSScanner
+    Katana
     Kiterunner
     LinkFinder
     Mapcidr
@@ -600,7 +602,6 @@ callInstallTools(){
     Qsreplace
     Unfurl
     Uro
-    Katana
     Waybackurls
     wafw00f
     WPScan
