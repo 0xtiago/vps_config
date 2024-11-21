@@ -488,6 +488,11 @@ Uro(){
     $PIPCOMMAND uro
 }
 
+Katana(){
+    echo -e "${RED}[+]${FUNCNAME[0]}${NC}"
+    go install github.com/projectdiscovery/katana/cmd/katana@latest
+}
+
 Waybackurls(){
     echo -e "${RED}[+]${FUNCNAME[0]}${NC}"
     go install -v github.com/tomnomnom/waybackurls@latest
@@ -595,6 +600,7 @@ callInstallTools(){
     Qsreplace
     Unfurl
     Uro
+    Katana
     Waybackurls
     wafw00f
     WPScan
