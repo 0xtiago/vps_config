@@ -712,8 +712,8 @@ PosInstalacao(){
 
 
 #INICIO DE CONFIGURACOES DE USUARIO #################################
-
-# Instalando o ohmyzsh e configurando o zsh como bash padrão
+setupUser(){
+    # Instalando o ohmyzsh e configurando o zsh como bash padrão
 # https://ohmyz.sh/#install
 
 
@@ -735,6 +735,10 @@ echo 'export PATH=$PATH:/root/go/bin' >> /root/.zshrc
 #Definindo shell padrão
 chsh -s /bin/zsh
 echo -e "${GREEN}[+] DONE${NC}"
+    
+}
+
+
 
 #FIM DE CONFIGURACOES DE USUARIO #################################
 
@@ -835,4 +839,5 @@ else
     callRequirements
     callInstallTools
     callPosInstalacao
+    setupUser
 fi
